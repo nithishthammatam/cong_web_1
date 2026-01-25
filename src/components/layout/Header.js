@@ -1,5 +1,7 @@
 'use client'
 
+import Link from 'next/link'
+
 export default function Header() {
   return (
     <header
@@ -19,7 +21,7 @@ export default function Header() {
         >
           <div className="flex justify-center items-center py-6 px-4 sm:px-6 relative" style={{ overflow: 'visible' }}>
             {/* Centered Logo */}
-            <a href="/" className="flex items-center hover:opacity-80 transition-opacity">
+            <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
               <img
                 src="/img/android-chrome-512x512.png"
                 alt="Cognera Logo"
@@ -28,7 +30,7 @@ export default function Header() {
               <h1 className="text-2xl sm:text-3xl text-white font-semibold" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
                 Cognera™
               </h1>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
