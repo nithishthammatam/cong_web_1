@@ -1,4 +1,17 @@
+/**
+ * HowItWorks Component
+ * 
+ * Displays the 4-step process of how Cognera works.
+ * Features:
+ * - 4-step workflow visualization with numbered badges
+ * - Each step has unique color scheme and icon
+ * - Interactive hover effects with gradient overlays
+ * - Responsive 2-column grid layout
+ * - Decorative corner accents for visual interest
+ */
 export default function HowItWorks() {
+  // Array of 4 steps in the Cognera workflow
+  // Each step has number, title, description, icon, gradient, and color scheme
   const steps = [
     {
       number: '1',
@@ -56,34 +69,42 @@ export default function HowItWorks() {
 
   return (
     <section className="how-it-works max-w-6xl mx-auto mb-8 sm:mb-12 px-4 sm:px-6 pointer-events-none relative z-10">
+      {/* Main section heading */}
       <h2 className="text-3xl sm:text-4xl md:text-5xl text-white text-center mb-8 sm:mb-10 font-bold pointer-events-auto" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
         How Cognera Works
       </h2>
+      {/* Subtitle */}
       <p className="text-xl sm:text-2xl text-white/80 text-center mb-8 sm:mb-10 pointer-events-auto" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
         A Simple 4-Step Process
       </p>
+      {/* Responsive grid: 1 column on mobile, 2 columns on desktop */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 relative">
         {steps.map((step, index) => (
+          // Step card with dark background and colored border
           <div 
             key={index} 
             className={`bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] rounded-2xl p-5 sm:p-6 border ${step.borderColor} hover:border-opacity-60 transition-all duration-300 hover:scale-105 hover:shadow-2xl pointer-events-auto group relative overflow-hidden`}
           >
-            {/* Background gradient overlay */}
+            {/* Background gradient overlay that appears on hover */}
             <div className={`absolute inset-0 bg-gradient-to-br ${step.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
             
+            {/* Step content */}
             <div className="flex items-start gap-3 sm:gap-4 relative z-10">
               <div className="flex-shrink-0 relative">
+                {/* Icon container with gradient background and hover scale */}
                 <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br ${step.gradient} border ${step.borderColor} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                   <div className={step.iconColor}>
                     {step.icon}
                   </div>
                 </div>
+                {/* Step number badge */}
                 <div className={`absolute -top-2 -right-2 w-8 h-8 rounded-full bg-gradient-to-br ${step.gradient} border-2 border-[#0a0a0a] flex items-center justify-center shadow-lg`}>
                   <span className="text-white text-sm font-bold" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
                     {step.number}
                   </span>
                 </div>
               </div>
+              {/* Step text content */}
               <div className="flex-1 pt-2">
                 <h3 className="text-xl sm:text-2xl text-white mb-2 sm:mb-3 font-bold group-hover:text-white transition-colors" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
                   {step.title}
@@ -94,7 +115,7 @@ export default function HowItWorks() {
               </div>
             </div>
             
-            {/* Decorative corner accent */}
+            {/* Decorative corner accent for visual interest */}
             <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${step.gradient} opacity-10 rounded-bl-full`}></div>
           </div>
         ))}

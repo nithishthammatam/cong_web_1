@@ -3,12 +3,28 @@
 import { useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
 
+/**
+ * Footer Component
+ * 
+ * Displays the site footer with animated brand name and footer links.
+ * Features:
+ * - Scroll-triggered animation for large brand name (reveals/hides based on scroll direction)
+ * - Privacy Policy link navigation
+ * - Copyright information
+ * - Gradient background from purple to black
+ * - Responsive design with proper spacing
+ */
 export default function Footer() {
-  const [scrollProgress, setScrollProgress] = useState(0)
-  const lastScrollYRef = useRef(0)
-  const scrollProgressRef = useRef(0)
-  const footerRef = useRef(null)
+  // State and refs for scroll-based animation
+  const [scrollProgress, setScrollProgress] = useState(0) // Progress value (0-1) for animation
+  const lastScrollYRef = useRef(0) // Tracks last scroll position for delta calculation
+  const scrollProgressRef = useRef(0) // Stores current progress value
+  const footerRef = useRef(null) // Reference to footer DOM element
 
+  /**
+   * Scroll event handler that controls the brand name animation
+   * Reveals brand name when scrolling down, hides when scrolling up
+   */
   useEffect(() => {
     const handleScroll = () => {
       if (!footerRef.current) return
@@ -105,11 +121,12 @@ export default function Footer() {
         </h1>
       </div>
 
-      {/* Footer Content - In Front */}
+      {/* Footer Content - In Front (above animated brand name) */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Footer Links */}
+        {/* Footer Links Section */}
         <div className="text-center mb-6 sm:mb-8">
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+            {/* Privacy Policy link with hover effects */}
             <Link 
               href="/privacy" 
               className="text-gray-400 hover:text-white text-xs sm:text-sm transition-colors duration-200 underline-offset-4 hover:underline"
@@ -120,7 +137,7 @@ export default function Footer() {
           </div>
         </div>
         
-        {/* Copyright */}
+        {/* Copyright Section */}
         <div className="text-center mb-8 sm:mb-12 lg:mb-16 xl:mb-20">
           <p className="text-gray-400 text-xs sm:text-sm" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
             &copy; 2025 Cognera Data Labs, Inc. All rights reserved. Cognera is a registered trademark of Cognera Data Labs, Inc.
