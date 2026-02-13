@@ -156,7 +156,7 @@ export default function ContactPage() {
               Talk to a product analytics expert
             </h2>
             <p className="text-gray-600 mb-6 sm:mb-8 text-sm sm:text-base">
-              Want to see a custom demo or get help finding the right plan? {`We'd love to chat.`}
+              Want to see a custom demo or get help finding the right plan? {`We&apos;d love to chat.`}
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -165,9 +165,7 @@ export default function ContactPage() {
                   <p className="text-red-600 text-sm">{errors.submit}</p>
                 </div>
               )}
-// ... (omitting unchanged form content for brevity if possible, but replace_file_content needs contigous block. I'll split this if needed or just replace the chunks)
-
-              // Actually, I can use multi_replace.
+              {/* Form fields */}
 
 
               <Input
@@ -271,7 +269,7 @@ export default function ContactPage() {
               <div className="space-y-3 pt-2">
                 <Checkbox
                   name="emailUpdates"
-                  label="I'd like to receive emails about news & updates from Cognera."
+                  label="I&apos;d like to receive emails about news & updates from Cognera."
                   checked={formData.emailUpdates}
                   onChange={handleChange}
                   isLight={true}
@@ -335,7 +333,7 @@ export default function ContactPage() {
 
             <div>
               <h3 className="text-lg sm:text-xl font-semibold mb-6 text-white font-serif">
-                {`Trusted by the world's leading companies`}
+                {`Trusted by the world&apos;s leading companies`}
               </h3>
               <div className="grid grid-cols-3 gap-4 sm:gap-6 mb-8">
                 {trustedCompanies.map((company, index) => (
