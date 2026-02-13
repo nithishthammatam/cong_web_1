@@ -1,6 +1,6 @@
 import './globals.css'
 import ConditionalLayout from '@/components/ConditionalLayout'
-import { IBM_Plex_Sans, Roboto, Poppins } from 'next/font/google'
+import { IBM_Plex_Sans, Roboto, Poppins, Newsreader, Inter } from 'next/font/google'
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ['latin'],
@@ -23,13 +23,28 @@ const poppins = Poppins({
   variable: '--font-poppins',
 })
 
+const newsreader = Newsreader({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  variable: '--font-newsreader',
+  display: 'swap',
+  weight: 'variable',
+})
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  style: ['normal'],
+  variable: '--font-inter',
+})
+
 export const metadata = {
   title: {
     default: 'Cognera Data Labs - Analytics Platform',
     template: '%s | Cognera Data Labs'
   },
-  description: 'Unlock Digital Productivity with Cognera Data Labs Analytics Platform. Transform your workflow with advanced analytics and real-time insights that drive meaningful productivity gains.',
-  keywords: ['analytics platform', 'digital productivity', 'data analytics', 'workflow optimization', 'productivity insights', 'Cognera'],
+  description: 'Understand user behavior with Cognera Data Labs Analytics Platform. Track screen time, analyze sessions, and gain deep insights into how users interact with your mobile app.',
+  keywords: ['analytics platform', 'user behavior', 'screen time tracking', 'session analysis', 'mobile app analytics', 'Cognera'],
   authors: [{ name: 'Cognera Data Labs' }],
   creator: 'Cognera Data Labs',
   publisher: 'Cognera Data Labs',
@@ -43,7 +58,7 @@ export const metadata = {
     url: process.env.NEXT_PUBLIC_SITE_URL || 'https://cognera.com',
     siteName: 'Cognera Data Labs',
     title: 'Cognera Data Labs - Analytics Platform',
-    description: 'Unlock Digital Productivity with Cognera Data Labs Analytics Platform',
+    description: 'Understand user behavior with Cognera Data Labs Analytics Platform',
     images: [
       {
         url: '/img/android-chrome-512x512.png',
@@ -56,7 +71,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Cognera Data Labs - Analytics Platform',
-    description: 'Unlock Digital Productivity with Cognera Data Labs Analytics Platform',
+    description: 'Understand user behavior with Cognera Data Labs Analytics Platform',
     images: ['/img/android-chrome-512x512.png'],
   },
   robots: {
@@ -83,11 +98,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${ibmPlexSans.variable} ${roboto.variable} ${poppins.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${ibmPlexSans.variable} ${roboto.variable} ${poppins.variable} ${newsreader.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body suppressHydrationWarning>
         <ConditionalLayout>{children}</ConditionalLayout>

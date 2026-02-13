@@ -152,7 +152,7 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Left Section - Contact Form */}
           <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-2xl">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 font-serif">
               Talk to a product analytics expert
             </h2>
             <p className="text-gray-600 mb-6 sm:mb-8 text-sm sm:text-base">
@@ -165,6 +165,10 @@ export default function ContactPage() {
                   <p className="text-red-600 text-sm">{errors.submit}</p>
                 </div>
               )}
+// ... (omitting unchanged form content for brevity if possible, but replace_file_content needs contigous block. I'll split this if needed or just replace the chunks)
+
+              // Actually, I can use multi_replace.
+
 
               <Input
                 label="Work Email"
@@ -311,14 +315,14 @@ export default function ContactPage() {
           {/* Right Section - Marketing Content */}
           <div className="flex flex-col justify-between text-white">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 font-serif">
                 Unlock the power of your products
               </h2>
 
               <div className="space-y-6 sm:space-y-8 mb-12">
                 {benefits.map((benefit, index) => (
                   <div key={index}>
-                    <h3 className="text-lg sm:text-xl font-bold mb-2 text-white">
+                    <h3 className="text-lg sm:text-xl font-bold mb-2 text-white font-serif">
                       {benefit.title}
                     </h3>
                     <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
@@ -330,7 +334,7 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <h3 className="text-lg sm:text-xl font-semibold mb-6 text-white">
+              <h3 className="text-lg sm:text-xl font-semibold mb-6 text-white font-serif">
                 {`Trusted by the world's leading companies`}
               </h3>
               <div className="grid grid-cols-3 gap-4 sm:gap-6 mb-8">

@@ -76,27 +76,27 @@ export default function FeatureGrid() {
   return (
     <section className="feature-grid max-w-7xl mx-auto mb-8 sm:mb-12 px-4 sm:px-6 pointer-events-none relative z-10">
       {/* Section heading */}
-      <h2 className="text-3xl sm:text-4xl md:text-5xl text-white text-center mb-4 sm:mb-6 font-bold pointer-events-auto" style={{ fontFamily: 'var(--font-roboto), "Roboto", sans-serif' }}>
+      <h2 className="text-3xl sm:text-4xl md:text-5xl text-gray-900 text-center mb-4 sm:mb-6 font-bold pointer-events-auto">
         Understand Your Users Like Never Before
       </h2>
       {/* Responsive grid: 1 column (mobile), 2 columns (tablet), 3 columns (desktop) */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-8 sm:mt-10">
         {features.map((feature, index) => (
           // Individual feature card with gradient background
-          <div 
-            key={index} 
-            className={`bg-gradient-to-br ${feature.gradient} rounded-2xl p-5 sm:p-6 border border-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105 hover:shadow-2xl pointer-events-auto group`}
+          <div
+            key={index}
+            className={`bg-white rounded-2xl p-5 sm:p-6 border border-gray-200 hover:border-indigo-300 transition-all duration-300 hover:scale-105 hover:shadow-xl pointer-events-auto group shadow-sm`}
           >
             {/* Feature icon with hover background color change */}
-            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-white/5 group-hover:bg-white/10 flex items-center justify-center mb-3 sm:mb-4 transition-colors text-white/90">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-indigo-50 group-hover:bg-indigo-100 flex items-center justify-center mb-3 sm:mb-4 transition-colors text-indigo-600">
               {feature.icon}
             </div>
             {/* Feature title */}
-            <h3 className="text-xl sm:text-2xl text-white mb-2 sm:mb-3 font-bold" style={{ fontFamily: 'var(--font-roboto), "Roboto", sans-serif' }}>
+            <h3 className="text-xl sm:text-2xl text-gray-900 mb-2 sm:mb-3 font-bold">
               {feature.title}
             </h3>
             {/* Feature description */}
-            <p className="text-base sm:text-lg text-white/80 leading-relaxed" style={{ fontFamily: 'var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif' }}>
+            <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
               {feature.description}
             </p>
           </div>

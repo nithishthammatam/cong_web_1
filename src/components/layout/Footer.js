@@ -87,11 +87,12 @@ export default function Footer() {
   return (
     <footer
       ref={footerRef}
-      className="text-white py-8 sm:py-12 mt-auto relative w-full z-10"
+      className="text-gray-900 py-8 sm:py-12 mt-auto relative w-full z-10"
       style={{
         marginBottom: 0,
         overflow: 'visible',
-        background: 'linear-gradient(to bottom, #7440FA, #000000)'
+        background: '#ffffff',
+        borderTop: '1px solid #e5e7eb'
       }}
     >
       {/* Footer Content */}
@@ -99,83 +100,76 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 mb-4 sm:mb-6">
           {/* Company Section */}
           <div className="max-w-xs">
-            <h3 className="text-white text-sm sm:text-base font-semibold mb-2 sm:mb-3" style={{ fontFamily: 'var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif' }}>
+            <h3 className="text-gray-900 text-sm sm:text-base font-semibold mb-2 sm:mb-3">
               Company
             </h3>
             <nav className="flex flex-col gap-0.5 sm:gap-1">
-              <Link 
-                href="/about" 
-                className="text-gray-300 hover:text-white hover:bg-[#A78BFA]/20 transition-all duration-200 text-xs sm:text-sm px-2 py-1 rounded flex items-center justify-between group"
-                style={{ fontFamily: 'var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif' }}
+              <Link
+                href="/about"
+                className="text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-all duration-200 text-xs sm:text-sm px-2 py-1 rounded flex items-center justify-between group"
               >
                 <span>About Us</span>
-                <span className="text-gray-400 group-hover:text-white transition-colors text-xs">→</span>
+                <span className="text-gray-400 group-hover:text-gray-600 transition-colors text-xs">→</span>
               </Link>
-              <Link 
-                href="/partner" 
-                className="text-gray-300 hover:text-white hover:bg-[#A78BFA]/20 transition-all duration-200 text-xs sm:text-sm px-2 py-1 rounded flex items-center justify-between group"
-                style={{ fontFamily: 'var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif' }}
+              <Link
+                href="/partner"
+                className="text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-all duration-200 text-xs sm:text-sm px-2 py-1 rounded flex items-center justify-between group"
               >
                 <span>Become a Partner</span>
-                <span className="text-gray-400 group-hover:text-white transition-colors text-xs">→</span>
+                <span className="text-gray-400 group-hover:text-gray-600 transition-colors text-xs">→</span>
               </Link>
-              <Link 
-                href="/experts" 
-                className="text-gray-300 hover:text-white hover:bg-[#A78BFA]/20 transition-all duration-200 text-xs sm:text-sm px-2 py-1 rounded flex items-center justify-between group"
-                style={{ fontFamily: 'var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif' }}
+              <Link
+                href="/experts"
+                className="text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-all duration-200 text-xs sm:text-sm px-2 py-1 rounded flex items-center justify-between group"
               >
                 <span>Expert Directory</span>
-                <span className="text-gray-400 group-hover:text-white transition-colors text-xs">→</span>
+                <span className="text-gray-400 group-hover:text-gray-600 transition-colors text-xs">→</span>
               </Link>
-              <Link 
-                href="/careers" 
-                className="text-gray-300 hover:text-white hover:bg-[#A78BFA]/20 transition-all duration-200 text-xs sm:text-sm px-2 py-1 rounded flex items-center justify-between group"
-                style={{ fontFamily: 'var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif' }}
+              <Link
+                href="/careers"
+                className="text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-all duration-200 text-xs sm:text-sm px-2 py-1 rounded flex items-center justify-between group"
               >
                 <span>Careers</span>
-                <span className="text-gray-400 group-hover:text-white transition-colors text-xs">→</span>
+                <span className="text-gray-400 group-hover:text-gray-600 transition-colors text-xs">→</span>
               </Link>
-              <Link 
-                href="/contact" 
-                className="text-gray-300 hover:text-white hover:bg-[#A78BFA]/20 transition-all duration-200 text-xs sm:text-sm px-2 py-1 rounded flex items-center justify-between group"
-                style={{ fontFamily: 'var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif' }}
+              <Link
+                href="/contact"
+                className="text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-all duration-200 text-xs sm:text-sm px-2 py-1 rounded flex items-center justify-between group"
               >
                 <span>Contact Sales</span>
-                <span className="text-gray-400 group-hover:text-white transition-colors text-xs">→</span>
+                <span className="text-gray-400 group-hover:text-gray-600 transition-colors text-xs">→</span>
               </Link>
             </nav>
           </div>
 
           {/* Legal Section */}
           <div className="max-w-xs">
-            <h3 className="text-white text-sm sm:text-base font-semibold mb-2 sm:mb-3" style={{ fontFamily: 'var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif' }}>
+            <h3 className="text-gray-900 text-sm sm:text-base font-semibold mb-2 sm:mb-3">
               Legal
             </h3>
             <nav className="flex flex-col gap-0.5 sm:gap-1">
-              <Link 
-                href="/privacy" 
-                className="text-gray-300 hover:text-white hover:bg-[#A78BFA]/20 transition-all duration-200 text-xs sm:text-sm px-2 py-1 rounded flex items-center justify-between group"
-                style={{ fontFamily: 'var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif' }}
+              <Link
+                href="/privacy"
+                className="text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-all duration-200 text-xs sm:text-sm px-2 py-1 rounded flex items-center justify-between group"
               >
                 <span>Privacy Policy</span>
-                <span className="text-gray-400 group-hover:text-white transition-colors text-xs">→</span>
+                <span className="text-gray-400 group-hover:text-gray-600 transition-colors text-xs">→</span>
               </Link>
-              <Link 
-                href="/terms" 
-                className="text-gray-300 hover:text-white hover:bg-[#A78BFA]/20 transition-all duration-200 text-xs sm:text-sm px-2 py-1 rounded flex items-center justify-between group"
-                style={{ fontFamily: 'var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif' }}
+              <Link
+                href="/terms"
+                className="text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-all duration-200 text-xs sm:text-sm px-2 py-1 rounded flex items-center justify-between group"
               >
                 <span>Terms and Conditions</span>
-                <span className="text-gray-400 group-hover:text-white transition-colors text-xs">→</span>
+                <span className="text-gray-400 group-hover:text-gray-600 transition-colors text-xs">→</span>
               </Link>
             </nav>
           </div>
         </div>
-        
+
 
         {/* Copyright Section */}
         <div className="text-center mb-4 sm:mb-6">
-          <p className="text-gray-400 text-xs sm:text-sm" style={{ fontFamily: 'var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif' }}>
+          <p className="text-gray-500 text-xs sm:text-sm">
             &copy; 2025 Cognera Data Labs, Inc. All rights reserved. Cognera is a registered trademark of Cognera Data Labs, Inc.
           </p>
         </div>

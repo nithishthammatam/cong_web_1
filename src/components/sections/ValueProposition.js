@@ -28,7 +28,7 @@ export default function ValueProposition({ title, items }) {
    * @returns {JSX.Element} SVG icon component
    */
   const getIcon = (index) => {
-    switch(index) {
+    switch (index) {
       case 0:
         return (
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -59,7 +59,7 @@ export default function ValueProposition({ title, items }) {
    * @returns {string} Tailwind gradient class
    */
   const getGradient = (index) => {
-    switch(index) {
+    switch (index) {
       case 0:
         return 'from-slate-600/20 to-slate-700/20'
       case 1:
@@ -77,7 +77,7 @@ export default function ValueProposition({ title, items }) {
    * @returns {string} Tailwind text color class
    */
   const getIconColor = (index) => {
-    switch(index) {
+    switch (index) {
       case 0:
         return 'text-blue-400'
       case 1:
@@ -92,7 +92,7 @@ export default function ValueProposition({ title, items }) {
   return (
     <section className="value-proposition max-w-4xl mx-auto mb-6 sm:mb-8 px-4 sm:px-6 relative z-10">
       {/* Section title with gradient text effect */}
-      <h2 className="text-2xl sm:text-3xl lg:text-4xl text-white mb-6 sm:mb-8 font-bold text-center bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+      <h2 className="text-2xl sm:text-3xl lg:text-4xl text-gray-900 mb-6 sm:mb-8 font-bold text-center">
         {title || 'The Three-Layered Approach'}
       </h2>
       {/* List of value proposition items */}
@@ -102,28 +102,28 @@ export default function ValueProposition({ title, items }) {
           const parts = item.split(':')
           const label = parts[0]
           const description = parts.slice(1).join(':').trim()
-          
+
           return (
             // Individual value proposition card
-            <div 
-              key={index} 
+            <div
+              key={index}
               className={`bg-gradient-to-br ${getGradient(index)} rounded-xl p-5 sm:p-6 border border-white/10 hover:border-white/20 transition-all duration-300 hover:scale-[1.02] group`}
             >
               <div className="flex items-start gap-4">
                 {/* Icon container with hover scale effect */}
-                <div className={`flex-shrink-0 w-12 h-12 rounded-lg bg-gradient-to-br ${getGradient(index)} border border-white/10 flex items-center justify-center ${getIconColor(index)} group-hover:scale-110 transition-transform`}>
+                <div className={`flex-shrink-0 w-12 h-12 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center ${getIconColor(index).replace('text-blue-400', 'text-blue-600').replace('text-indigo-400', 'text-indigo-600').replace('text-slate-400', 'text-slate-600')} group-hover:scale-110 transition-transform`}>
                   {getIcon(index)}
                 </div>
                 {/* Text content */}
                 <div className="flex-1">
                   {/* Item label/title */}
-                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-roboto), "Roboto", sans-serif' }}>
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
                     {label}
                   </h3>
                   {/* Item description with hover color transition */}
-                  <p className="text-base sm:text-lg leading-relaxed text-white/80 group-hover:text-white/90 transition-colors" style={{ fontFamily: 'var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif' }}>
+                  <p className="leading-relaxed text-gray-600 group-hover:text-gray-900 transition-colors">
                     {description}
-          </p>
+                  </p>
                 </div>
               </div>
             </div>

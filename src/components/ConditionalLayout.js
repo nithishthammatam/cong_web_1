@@ -5,7 +5,7 @@ import Layout from './Layout'
 
 export default function ConditionalLayout({ children }) {
   const pathname = usePathname()
-  const isAuthPage = pathname === '/login' || pathname === '/signup'
+  const isAuthPage = pathname === '/login' || pathname === '/signup' || pathname === '/get-started'
 
   if (isAuthPage) {
     return <>{children}</>

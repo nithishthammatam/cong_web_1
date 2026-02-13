@@ -120,8 +120,8 @@ export default function ContactSalesPage() {
 
   const benefits = [
     {
-      title: 'Transform Your Workflow with Advanced Analytics',
-      description: 'Unlock digital productivity with the Cognera behavior intelligence framework. Get real-time insights that drive meaningful productivity gains and optimize your workflow.'
+      title: 'Track Screen Time & Analyze Sessions',
+      description: 'Gain deep insights into how users interact with your mobile app. Make data-driven decisions with our AI-powered analytics platform.'
     },
     {
       title: 'Understand Behavior Patterns & Flow States',
@@ -138,34 +138,72 @@ export default function ContactSalesPage() {
   ]
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#ffffff' }}>
-      {/* Hero Section */}
-      <div className="bg-white border-b border-gray-200">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-12 sm:py-16">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'var(--font-poppins), "Poppins", sans-serif' }}>
-              Unlock Digital Productivity with Cognera
+    <div className="min-h-screen bg-white">
+      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+        {/* Left Section - Content */}
+        <div className="bg-gray-50 p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
+          <div className="max-w-xl mx-auto lg:mx-0">
+            {/* Logo */}
+            <div className="mb-12">
+              <img
+                src="/img/Cognera_log_bg_removed.png"
+                alt="Cognera Logo"
+                className="h-12 w-auto object-contain"
+              />
+            </div>
+
+            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-12">
+              Understand User Behavior with Cognera
             </h1>
-            <h2 className="text-xl sm:text-2xl text-gray-600 mb-8" style={{ fontFamily: 'var(--font-poppins), "Poppins", sans-serif', fontWeight: 400 }}>
-              Talk to a digital productivity expert
-            </h2>
-            <p className="text-lg text-gray-600" style={{ fontFamily: 'var(--font-poppins), "Poppins", sans-serif' }}>
-              Want to see how Cognera can transform your workflow with advanced analytics? We&apos;d love to chat.
-            </p>
+
+            <div className="space-y-10">
+              <div>
+                <h3 className="text-xl font-bold mb-3 text-gray-900">
+                  Track Screen Time & Analyze Sessions
+                </h3>
+                <p className="text-gray-600 text-base leading-relaxed">
+                  Gain deep insights into how users interact with your mobile app. Make data-driven decisions with our AI-powered analytics platform.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-bold mb-3 text-gray-900">
+                  Understand Behavior Patterns & Flow States
+                </h3>
+                <p className="text-gray-600 text-base leading-relaxed">
+                  Discover how users interact with your digital products. Our behavioral models derive flow state duration, distraction intensity, and recovery patterns to help you make data-driven decisions.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-bold mb-3 text-gray-900">
+                  Privacy-Safe Data Capture & Insights
+                </h3>
+                <p className="text-gray-600 text-base leading-relaxed">
+                  Capture session time, focus windows, and app-switching signals while maintaining privacy. Our data foundation ensures your insights are both powerful and compliant.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-bold mb-3 text-gray-900">
+                  Drive Action with Behavioral Intelligence
+                </h3>
+                <p className="text-gray-600 text-base leading-relaxed">
+                  Turn behavioral insights into actionable improvements. Optimize product decisions, enhance user experience, and improve digital productivity with confidence.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Main Content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-12 sm:py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Left Section - Contact Form */}
-          <div className="bg-white rounded-xl p-6 sm:p-8 shadow-lg border border-gray-200">
-            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2" style={{ fontFamily: 'var(--font-poppins), "Poppins", sans-serif' }}>
+        {/* Right Section - Contact Form */}
+        <div className="bg-white p-8 sm:p-12 lg:p-16 flex flex-col justify-center border-l border-gray-100">
+          <div className="max-w-lg mx-auto w-full">
+            <h2 className="text-3xl font-bold text-gray-900 mb-2">
               Talk to a digital productivity expert
-            </h3>
-            <p className="text-gray-600 mb-6 sm:mb-8 text-sm sm:text-base" style={{ fontFamily: 'var(--font-poppins), "Poppins", sans-serif' }}>
-              Want to see how Cognera can transform your workflow with advanced analytics and real-time insights? We&apos;d love to chat.
+            </h2>
+            <p className="text-gray-600 mb-8">
+              Want to see how Cognera can help you track screen time, analyze sessions, and gain deep insights? We&apos;d love to chat.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -315,28 +353,6 @@ export default function ContactSalesPage() {
                 {isLoading ? 'Submitting...' : 'Contact Sales'}
               </Button>
             </form>
-          </div>
-
-          {/* Right Section - Benefits */}
-          <div className="flex flex-col justify-center">
-            <div className="mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-8" style={{ fontFamily: 'var(--font-poppins), "Poppins", sans-serif' }}>
-                Unlock Digital Productivity with Cognera
-              </h2>
-
-              <div className="space-y-8">
-                {benefits.map((benefit, index) => (
-                  <div key={index}>
-                    <h3 className="text-xl font-bold mb-2 text-gray-900" style={{ fontFamily: 'var(--font-poppins), "Poppins", sans-serif' }}>
-                      {benefit.title}
-                    </h3>
-                    <p className="text-gray-600 text-base leading-relaxed" style={{ fontFamily: 'var(--font-poppins), "Poppins", sans-serif' }}>
-                      {benefit.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </div>

@@ -32,19 +32,17 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen pt-16 sm:pt-18 pb-8 sm:pb-12 relative z-10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Hero Section */}
         <section className="text-center mb-16 sm:mb-20">
           <div className="max-w-4xl mx-auto">
-            <h1 
+            <h1
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 sm:mb-8 leading-tight"
-              style={{ fontFamily: 'var(--font-roboto), "Roboto", sans-serif' }}
             >
               Data-Driven Innovation
             </h1>
-            <p 
+            <p
               className="text-lg sm:text-xl md:text-2xl text-gray-300 leading-relaxed"
-              style={{ fontFamily: 'var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif' }}
             >
               Transforming raw data into actionable insights that drive business growth and digital productivity.
             </p>
@@ -55,19 +53,17 @@ export default function AboutPage() {
         {/* Accreditation & Recognition Gallery */}
         <section className="mb-16 sm:mb-20">
           <div className="max-w-6xl mx-auto">
-            <h2 
+            <h2
               className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 sm:mb-8 text-center"
-              style={{ fontFamily: 'var(--font-roboto), "Roboto", sans-serif' }}
             >
               Accreditation & Recognition
             </h2>
-            <p 
+            <p
               className="text-center text-gray-400 mb-8 sm:mb-12 text-sm sm:text-base"
-              style={{ fontFamily: 'var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif' }}
             >
               Recognized by leading government bodies and industry organizations
             </p>
-            
+
             {/* Modular Certificate Grid - Automatically adjusts for new certificates */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {certificates.map((certificate) => (
@@ -80,94 +76,81 @@ export default function AboutPage() {
         {/* Company Information */}
         <section className="mb-16 sm:mb-20">
           <div className="max-w-4xl mx-auto">
-            <h2 
+            <h2
               className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 sm:mb-8"
-              style={{ fontFamily: 'var(--font-roboto), "Roboto", sans-serif' }}
             >
               Company Information
             </h2>
             <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-white/10 rounded-xl p-6 sm:p-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <h3 
+                  <h3
                     className="text-lg font-semibold text-white mb-2"
-                    style={{ fontFamily: 'var(--font-roboto), "Roboto", sans-serif' }}
                   >
                     Entity Name
                   </h3>
-                  <p 
+                  <p
                     className="text-gray-300"
-                    style={{ fontFamily: 'var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif' }}
                   >
                     Cognera Data Labs Private Limited
                   </p>
                 </div>
                 <div>
-                  <h3 
+                  <h3
                     className="text-lg font-semibold text-white mb-2"
-                    style={{ fontFamily: 'var(--font-roboto), "Roboto", sans-serif' }}
                   >
                     Date of Incorporation
                   </h3>
-                  <p 
+                  <p
                     className="text-gray-300"
-                    style={{ fontFamily: 'var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif' }}
                   >
                     November 7, 2025
                   </p>
                 </div>
                 <div>
-                  <h3 
+                  <h3
                     className="text-lg font-semibold text-white mb-2"
-                    style={{ fontFamily: 'var(--font-roboto), "Roboto", sans-serif' }}
                   >
                     Industry
                   </h3>
-                  <p 
+                  <p
                     className="text-gray-300"
-                    style={{ fontFamily: 'var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif' }}
                   >
                     Analytics Industry
                   </p>
                 </div>
                 <div>
-                  <h3 
+                  <h3
                     className="text-lg font-semibold text-white mb-2"
-                    style={{ fontFamily: 'var(--font-roboto), "Roboto", sans-serif' }}
                   >
                     Sector
                   </h3>
-                  <p 
+                  <p
                     className="text-gray-300"
-                    style={{ fontFamily: 'var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif' }}
                   >
                     Data Science
                   </p>
                 </div>
                 <div>
-                  <h3 
+                  <h3
                     className="text-lg font-semibold text-white mb-2"
-                    style={{ fontFamily: 'var(--font-roboto), "Roboto", sans-serif' }}
                   >
                     Enterprise Type
                   </h3>
-                  <p 
+                  <p
                     className="text-gray-300"
-                    style={{ fontFamily: 'var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif' }}
                   >
                     Micro
                   </p>
                 </div>
                 <div>
-                  <h3 
+                  <h3
                     className="text-lg font-semibold text-white mb-2"
-                    style={{ fontFamily: 'var(--font-roboto), "Roboto", sans-serif' }}
                   >
                     Location
                   </h3>
-                  <p 
+                  <p
                     className="text-gray-300"
-                    style={{ fontFamily: 'var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif' }}
                   >
                     Hyderabad, Telangana
                   </p>

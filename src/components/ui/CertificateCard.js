@@ -18,8 +18,8 @@ export default function CertificateCard({ certificate }) {
       <div className="flex items-center gap-3 mb-4">
         {certificate.logoUrl ? (
           <div className="w-24 h-24 bg-white rounded-lg flex items-center justify-center p-3 group-hover:scale-105 transition-transform">
-            <img 
-              src={certificate.logoUrl} 
+            <img
+              src={certificate.logoUrl}
               alt={`${certificate.title} logo`}
               className="max-w-full max-h-full object-contain"
             />
@@ -31,7 +31,7 @@ export default function CertificateCard({ certificate }) {
             </svg>
           </div>
         )}
-        <h3 className="text-lg font-semibold text-white group-hover:text-[#A78BFA] transition-colors" style={{ fontFamily: 'var(--font-roboto), "Roboto", sans-serif' }}>
+        <h3 className="text-lg font-semibold text-white group-hover:text-[#A78BFA] transition-colors">
           {certificate.title}
         </h3>
       </div>
@@ -66,7 +66,6 @@ export default function CertificateCard({ certificate }) {
           <button
             onClick={() => setIsModalOpen(true)}
             className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-[#A78BFA]/20 hover:bg-[#A78BFA]/30 text-[#A78BFA] hover:text-white rounded-lg transition-all text-sm font-medium"
-            style={{ fontFamily: 'var(--font-roboto), "Roboto", sans-serif' }}
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -81,7 +80,6 @@ export default function CertificateCard({ certificate }) {
             target="_blank"
             rel="noopener noreferrer"
             className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-all text-sm font-medium"
-            style={{ fontFamily: 'var(--font-roboto), "Roboto", sans-serif' }}
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />

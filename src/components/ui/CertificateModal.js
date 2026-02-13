@@ -29,7 +29,6 @@ export default function CertificateModal({ certificate, isOpen, onClose }) {
         <div className="flex items-center justify-between p-4 sm:p-6 border-b border-white/10 relative z-[202]">
           <h3
             className="text-xl sm:text-2xl font-semibold text-white"
-            style={{ fontFamily: 'var(--font-roboto), "Roboto", sans-serif' }}
           >
             {certificate.title}
           </h3>
@@ -83,7 +82,6 @@ export default function CertificateModal({ certificate, isOpen, onClose }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2 bg-[#A78BFA]/20 hover:bg-[#A78BFA]/30 text-[#A78BFA] hover:text-white rounded-lg transition-all text-sm font-medium flex items-center gap-2"
-                style={{ fontFamily: 'var(--font-roboto), "Roboto", sans-serif' }}
               >
                 <svg
                   className="w-4 h-4"
@@ -107,7 +105,6 @@ export default function CertificateModal({ certificate, isOpen, onClose }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-all text-sm font-medium flex items-center gap-2"
-                style={{ fontFamily: 'var(--font-roboto), "Roboto", sans-serif' }}
               >
                 <svg
                   className="w-4 h-4"

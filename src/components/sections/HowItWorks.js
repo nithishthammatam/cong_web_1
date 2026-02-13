@@ -23,8 +23,8 @@ export default function HowItWorks() {
         </svg>
       ),
       gradient: 'from-blue-500/20 to-cyan-500/20',
-      iconColor: 'text-blue-400',
-      borderColor: 'border-blue-500/30'
+      iconColor: 'text-blue-600',
+      borderColor: 'border-blue-100'
     },
     {
       number: '2',
@@ -36,8 +36,8 @@ export default function HowItWorks() {
         </svg>
       ),
       gradient: 'from-purple-500/20 to-pink-500/20',
-      iconColor: 'text-purple-400',
-      borderColor: 'border-purple-500/30'
+      iconColor: 'text-purple-600',
+      borderColor: 'border-purple-100'
     },
     {
       number: '3',
@@ -49,8 +49,8 @@ export default function HowItWorks() {
         </svg>
       ),
       gradient: 'from-indigo-500/20 to-blue-500/20',
-      iconColor: 'text-indigo-400',
-      borderColor: 'border-indigo-500/30'
+      iconColor: 'text-indigo-600',
+      borderColor: 'border-indigo-100'
     },
     {
       number: '4',
@@ -62,59 +62,59 @@ export default function HowItWorks() {
         </svg>
       ),
       gradient: 'from-green-500/20 to-emerald-500/20',
-      iconColor: 'text-green-400',
-      borderColor: 'border-green-500/30'
+      iconColor: 'text-green-600',
+      borderColor: 'border-green-100'
     }
   ]
 
   return (
     <section className="how-it-works max-w-6xl mx-auto mb-8 sm:mb-12 px-4 sm:px-6 pointer-events-none relative z-10">
       {/* Main section heading */}
-      <h2 className="text-3xl sm:text-4xl md:text-5xl text-white text-center mb-8 sm:mb-10 font-bold pointer-events-auto" style={{ fontFamily: 'var(--font-roboto), "Roboto", sans-serif' }}>
+      <h2 className="text-3xl sm:text-4xl md:text-5xl text-gray-900 text-center mb-8 sm:mb-10 font-bold pointer-events-auto">
         How Cognera Works
       </h2>
       {/* Subtitle */}
-      <p className="text-xl sm:text-2xl text-white/80 text-center mb-8 sm:mb-10 pointer-events-auto" style={{ fontFamily: 'var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif' }}>
+      <p className="text-gray-600 text-center mb-8 sm:mb-10 pointer-events-auto">
         A Simple 4-Step Process
       </p>
       {/* Responsive grid: 1 column on mobile, 2 columns on desktop */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 relative">
         {steps.map((step, index) => (
           // Step card with dark background and colored border
-          <div 
-            key={index} 
-            className={`bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] rounded-2xl p-5 sm:p-6 border ${step.borderColor} hover:border-opacity-60 transition-all duration-300 hover:scale-105 hover:shadow-2xl pointer-events-auto group relative overflow-hidden`}
+          <div
+            key={index}
+            className={`bg-white rounded-2xl p-5 sm:p-6 border ${step.borderColor} hover:border-gray-300 transition-all duration-300 hover:scale-105 hover:shadow-xl pointer-events-auto group relative overflow-hidden shadow-sm`}
           >
             {/* Background gradient overlay that appears on hover */}
-            <div className={`absolute inset-0 bg-gradient-to-br ${step.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
-            
+            <div className={`absolute inset-0 bg-gradient-to-br ${step.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
+
             {/* Step content */}
             <div className="flex items-start gap-3 sm:gap-4 relative z-10">
               <div className="flex-shrink-0 relative">
                 {/* Icon container with gradient background and hover scale */}
-                <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br ${step.gradient} border ${step.borderColor} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white border ${step.borderColor} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-sm`}>
                   <div className={step.iconColor}>
                     {step.icon}
                   </div>
                 </div>
                 {/* Step number badge */}
-                <div className={`absolute -top-2 -right-2 w-8 h-8 rounded-full bg-gradient-to-br ${step.gradient} border-2 border-[#0a0a0a] flex items-center justify-center shadow-lg`}>
-                  <span className="text-white text-sm font-bold" style={{ fontFamily: 'var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif' }}>
+                <div className={`absolute -top-2 -right-2 w-8 h-8 rounded-full bg-white border-2 border-gray-100 flex items-center justify-center shadow-md`}>
+                  <span className="text-gray-900 text-sm font-bold">
                     {step.number}
                   </span>
                 </div>
               </div>
               {/* Step text content */}
               <div className="flex-1 pt-2">
-                <h3 className="text-xl sm:text-2xl text-white mb-2 sm:mb-3 font-bold group-hover:text-white transition-colors" style={{ fontFamily: 'var(--font-roboto), "Roboto", sans-serif' }}>
+                <h3 className="text-gray-900 mb-2 sm:mb-3 font-bold group-hover:text-indigo-600 transition-colors">
                   {step.title}
                 </h3>
-                <p className="text-base sm:text-lg text-white/80 leading-relaxed group-hover:text-white/90 transition-colors" style={{ fontFamily: 'var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif' }}>
+                <p className="text-gray-600 leading-relaxed group-hover:text-gray-800 transition-colors">
                   {step.description}
                 </p>
               </div>
             </div>
-            
+
             {/* Decorative corner accent for visual interest */}
             <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${step.gradient} opacity-10 rounded-bl-full`}></div>
           </div>
