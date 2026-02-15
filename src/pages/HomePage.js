@@ -1,58 +1,45 @@
 import Hero from '@/components/sections/Hero'
-import ProblemSection from '@/components/sections/ProblemSection'
-import SolutionSection from '@/components/sections/SolutionSection'
-import FeatureGrid from '@/components/sections/FeatureGrid'
+import SocialProofSection from '@/components/sections/SocialProofSection'
 import HowItWorks from '@/components/sections/HowItWorks'
-import ValueProposition from '@/components/sections/ValueProposition'
+import FeatureGrid from '@/components/sections/FeatureGrid'
+import DemoPreviewSection from '@/components/sections/DemoPreviewSection'
+import UseCasesSection from '@/components/sections/UseCasesSection'
+import BottomCTA from '@/components/sections/BottomCTA'
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen relative" style={{ backgroundColor: 'transparent', zIndex: 10 }}>
-      <div className="container mx-auto relative z-10">
-        {/* Hero Section */}
-        <Hero
-          title={
-            <>
-              <span className="text-[#171123] font-medium">Understand user behavior with </span>
-              <span className="text-[#6F2DBD] block sm:inline font-bold">powerful analytics</span>
-            </>
-          }
-          subtitle="Track, analyze, and optimize mobile app engagement with AI-powered screen time analytics."
-        />
+    <div className="min-h-screen relative" style={{ zIndex: 10 }}>
+      {/* 1. Hero Section */}
+      <Hero />
 
-        {/* Problem Section */}
-        <div className="py-4 sm:py-6">
-          <ProblemSection />
+      <div className="relative z-10">
+        {/* 2. Social Proof */}
+        <div className="py-14 sm:py-20">
+          <SocialProofSection />
         </div>
 
-        {/* Solution Section */}
-        <div className="py-4 sm:py-6">
-          <SolutionSection />
-        </div>
-
-        {/* Feature Grid */}
-        <div className="py-4 sm:py-6">
-          <FeatureGrid />
-        </div>
-
-        {/* How It Works */}
-        <div className="py-4 sm:py-6">
+        {/* 3. How It Works */}
+        <div className="py-14 sm:py-20" style={{ backgroundColor: '#F8F5FC' }}>
           <HowItWorks />
         </div>
 
-        {/* Value Proposition */}
-        <div className="py-4 sm:py-6">
-          <ValueProposition
-            title="The Cognera Three-Layer Behaviour Intelligence Framework"
-            items={[
-              'Data Foundation: Privacy-safe capture of session time, focus windows, and app-switching signals.',
-              'Insights Engine: Behavioural models derive flow state duration, distraction intensity, and recovery patterns.',
-              'Action Framework: Behavioural insights inform product decisions, experience optimization, and digital productivity improvements.'
-            ]}
-          />
+        {/* 4. Key Features */}
+        <div className="py-14 sm:py-20">
+          <FeatureGrid />
         </div>
 
+        {/* 5. Demo Dashboard Preview */}
+        <div className="py-14 sm:py-20" style={{ backgroundColor: '#F8F5FC' }}>
+          <DemoPreviewSection />
+        </div>
 
+        {/* 6. Use Cases */}
+        <div className="py-14 sm:py-20">
+          <UseCasesSection />
+        </div>
+
+        {/* 7. Bottom CTA */}
+        <BottomCTA />
       </div>
     </div>
   )

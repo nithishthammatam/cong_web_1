@@ -1,115 +1,148 @@
-/**
- * ProblemSection Component
- * 
- * Displays the main value proposition and challenges that Cognera addresses.
- * Features:
- * - Hero message highlighting the difference between traditional analytics and Cognera
- * - Grid of challenge cards with relevant icons
- * - Hover effects and smooth transitions
- * - Responsive design for mobile and desktop
- */
-export default function ProblemSection() {
-  // Array of challenges with associated icons
-  // Each challenge represents a problem that Cognera solves
-  const challenges = [
-    {
-      text: 'Users frequently switch apps, fragmenting attention mid-task',
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-        </svg>
-      )
-    },
-    {
-      text: 'Engagement metrics fluctuate without actionable explanations',
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-        </svg>
-      )
-    },
-    {
-      text: 'Teams lack visibility into distraction vs focused usage patterns',
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-        </svg>
-      )
-    },
-    {
-      text: 'Drop-offs occur without behavioural context',
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
-        </svg>
-      )
-    },
-    {
-      text: 'Privacy laws limit invasive, event-heavy tracking approaches',
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-        </svg>
-      )
-    }
-  ]
+'use client'
 
+const problems = [
+  {
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+      </svg>
+    ),
+    title: 'Fragmented attention',
+    description: 'Users switch apps constantly, breaking focus mid-task with no way to measure it.',
+  },
+  {
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+      </svg>
+    ),
+    title: 'Vanity metrics',
+    description: 'Engagement numbers fluctuate without actionable behavioural explanations.',
+  },
+  {
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+      </svg>
+    ),
+    title: 'No focus visibility',
+    description: 'Teams can\'t distinguish distracted browsing from deep, focused usage.',
+  },
+  {
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
+      </svg>
+    ),
+    title: 'Blind drop-offs',
+    description: 'Users leave without behavioural context — you see the what, never the why.',
+  },
+  {
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+      </svg>
+    ),
+    title: 'Privacy constraints',
+    description: 'New regulations limit invasive, event-heavy tracking you once relied on.',
+  },
+  {
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    title: 'Half the picture',
+    description: 'Traditional analytics show what happened — but never how or why it happened.',
+  },
+]
+
+export default function ProblemSection() {
   return (
-    <section className="problem-section max-w-5xl mx-auto mb-8 sm:mb-12 px-4 sm:px-6 pointer-events-none relative z-10">
-      {/* Main container with dark gradient background and border */}
-      <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200 shadow-2xl pointer-events-auto">
-        {/* Header section with icon and main value proposition */}
-        <div className="flex items-start gap-4 mb-6">
-          {/* Analytics icon with gradient background */}
-          <div className="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-indigo-50 flex items-center justify-center border border-indigo-100">
-            <svg className="w-8 h-8 sm:w-10 sm:h-10 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+    <section className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+
+        {/* LEFT: Sticky headline */}
+        <div className="lg:col-span-5 lg:sticky lg:top-32">
+          <div
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-5"
+            style={{ backgroundColor: 'rgba(239,68,68,0.06)', color: '#dc2626' }}
+          >
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
             </svg>
+            The Problem
           </div>
-          {/* Main heading with gradient text effect */}
-          <div className="flex-1">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl text-gray-900 mb-3 sm:mb-4 font-bold leading-tight">
-              Analytics show what happened. Cognera shows how it happened.
-            </h2>
-            {/* Supporting description text */}
-            <p className="text-gray-600 mb-6 leading-relaxed">
-              Traditional analytics stop at clicks, visits, and events. They do not explain behaviour.
-            </p>
+
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight leading-[1.15] mb-5" style={{ color: '#171123' }}>
+            Analytics show <em className="not-italic" style={{ color: '#6F2DBD' }}>what</em> happened.
+            <br />
+            Not <em className="not-italic" style={{ color: '#6F2DBD' }}>how</em> it happened.
+          </h2>
+
+          <p className="text-base leading-relaxed mb-8" style={{ color: '#4A4458' }}>
+            Traditional analytics stop at clicks, visits, and events. They don&apos;t explain the behaviour behind the numbers — leaving product teams guessing.
+          </p>
+
+          {/* Visual accent: arrow pointing to cards */}
+          <div className="hidden lg:flex items-center gap-3" style={{ color: '#8B8696' }}>
+            <div className="h-[1px] w-12" style={{ backgroundColor: '#E5E0EB' }}></div>
+            <span className="text-xs font-medium tracking-wide uppercase">Common challenges</span>
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
           </div>
         </div>
 
-        {/* Challenges grid section */}
-        <div className="mb-6">
-          <h3 className="text-xl sm:text-2xl text-gray-900 mb-4 font-semibold">
-            {`Today's challenges:`}
-          </h3>
-          {/* Responsive grid: 1 column on mobile, 2 columns on desktop */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {challenges.map((challenge, index) => (
-              // Individual challenge card with hover effects
-              <div key={index} className="flex items-start gap-3 p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-all duration-300 border border-gray-100 hover:border-gray-200 group">
-                {/* Icon container with hover scale animation */}
-                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-gray-200 flex items-center justify-center mt-0.5 group-hover:scale-110 transition-transform text-gray-500 group-hover:text-indigo-600">
-                  {challenge.icon}
+        {/* RIGHT: Problem cards grid */}
+        <div className="lg:col-span-7">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {problems.map((problem, index) => (
+              <div
+                key={index}
+                className="group rounded-xl border border-gray-200/80 p-5 transition-all duration-300 hover:shadow-lg hover:shadow-gray-900/[0.04] hover:border-gray-300/80"
+                style={{ backgroundColor: '#FFFFFF' }}
+              >
+                {/* Icon */}
+                <div
+                  className="w-10 h-10 rounded-lg flex items-center justify-center mb-4 transition-colors duration-300 group-hover:scale-105 origin-center"
+                  style={{ backgroundColor: 'rgba(111,45,189,0.06)', color: '#6F2DBD' }}
+                >
+                  {problem.icon}
                 </div>
-                {/* Challenge text with hover color transition */}
-                <p className="text-gray-700 leading-relaxed group-hover:text-gray-900 transition-colors">
-                  {challenge.text}
+
+                {/* Content */}
+                <h4 className="text-[15px] font-bold mb-1.5" style={{ color: '#171123' }}>
+                  {problem.title}
+                </h4>
+                <p className="text-sm leading-relaxed" style={{ color: '#8B8696' }}>
+                  {problem.description}
                 </p>
               </div>
             ))}
           </div>
+
+          {/* Bottom callout */}
+          <div
+            className="mt-4 rounded-xl border px-5 py-4 flex items-center gap-4"
+            style={{ borderColor: 'rgba(111,45,189,0.15)', backgroundColor: 'rgba(111,45,189,0.03)' }}
+          >
+            <div
+              className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+              style={{ backgroundColor: 'rgba(111,45,189,0.08)', color: '#6F2DBD' }}
+            >
+              <svg className="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <p className="text-sm font-medium" style={{ color: '#171123' }}>
+              Companies are making product decisions with <span style={{ color: '#6F2DBD', fontWeight: 700 }}>half the information</span>. There&apos;s a better way.
+            </p>
+          </div>
         </div>
 
-        {/* Bottom call-to-action message */}
-        <div className="pt-6 border-t border-gray-200">
-          <p className="text-lg text-gray-800 font-bold text-center">
-            Companies make decisions with half information.
-          </p>
-        </div>
       </div>
     </section>
   )
 }
-

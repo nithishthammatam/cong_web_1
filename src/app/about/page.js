@@ -1,8 +1,9 @@
 'use client'
 
+import { useState } from 'react'
 import CertificateCard from '@/components/ui/CertificateCard'
 
-// Modular Certificate Data - Easy to add more certificates
+// Modular Certificate Data
 const certificates = [
   {
     id: 1,
@@ -11,9 +12,9 @@ const certificates = [
     issuedDate: 'February 6, 2026',
     issuer: 'Department for Promotion of Industry and Internal Trade (DPIIT), Ministry of Commerce & Industry, Government of India',
     description: 'Officially recognized as a startup by the Department for Promotion of Industry and Internal Trade. Valid for ten years from the date of incorporation (until November 6, 2035).',
-    logoUrl: '/img/Startup-India_Preview.png', // Startup India logo
-    pdfUrl: '/certificates/dpiit-startup-certificate.pdf', // Add PDF path when available
-    verifyUrl: 'https://www.startupindia.gov.in/' // Optional verification link
+    logoUrl: '/img/Startup-India_Preview.png',
+    pdfUrl: '/certificates/dpiit-startup-certificate.pdf',
+    verifyUrl: 'https://www.startupindia.gov.in/'
   },
   {
     id: 2,
@@ -22,146 +23,368 @@ const certificates = [
     issuedDate: 'December 12, 2025',
     issuer: 'Ministry of Micro, Small & Medium Enterprises, Government of India',
     description: 'Registered as a Micro Enterprise. Major activities include computer programming, consultancy, software publishing, software support and maintenance, and retail sale of computers, peripheral units, and software.',
-    logoUrl: '/img/msme-logo.jpeg', // MSME logo
-    pdfUrl: '/certificates/udyam-certificate.pdf', // Add PDF path when available
-    verifyUrl: 'https://udyamregistration.gov.in/' // Optional verification link
+    logoUrl: '/img/msme-logo.jpeg',
+    pdfUrl: '/certificates/udyam-certificate.pdf',
+    verifyUrl: 'https://udyamregistration.gov.in/'
   }
 ]
 
-export default function AboutPage() {
+// Founder Data
+const founders = [
+  {
+    id: 1,
+    name: 'Dr. S. Ravi Kumar',
+    title: 'Founder & Managing Director',
+    company: 'Cognera Data Labs Pvt Ltd',
+    initials: 'SR',
+    bio: [
+      'Dr. S. Ravi Kumar is the Founder and Managing Director of Cognera Data Labs Pvt Ltd, a DeepTech company building privacy-first behavioral analytics infrastructure for regulated digital environments.',
+      'With a Ph.D. in Finance and over 15 years of academic and applied research experience, Dr. Ravi Kumar specializes in quantitative modeling, time series analysis, and uncertainty measurement. His work in dynamic systems and behavioral modeling forms the analytical backbone of Cognera\'s core architecture.',
+      'He founded Cognera to solve a structural gap in modern analytics: enabling organizations to understand user engagement and behavioral flow without relying on invasive tracking or personally identifiable data. Under his leadership, the company is developing SDK-based behavioral intelligence systems that measure attention patterns, usage transitions, and engagement dynamics in a compliance-aligned framework.',
+      'Dr. Ravi Kumar leads product strategy, modeling architecture, and long-term infrastructure design. His focus is on building scalable, privacy-by-design analytics systems that meet the operational requirements of enterprise, healthcare, and compliance-sensitive digital platforms.',
+      'His vision is to establish a trusted behavioral intelligence layer that enables responsible measurement while maintaining strict regulatory and ethical boundaries.'
+    ]
+  },
+  {
+    id: 2,
+    name: 'Dr. Radhakrishna Bhimavarapu',
+    title: 'Executive Director',
+    company: 'Cognera Data Labs Private Limited',
+    initials: 'RB',
+    bio: [
+      'Dr. Radhakrishna Bhimavarapu is a research-driven professional with a strong orientation toward analytics, data governance, and strategic decision-making. With a background that blends academic rigor and applied business insight, he brings a structured, evidence-based approach to problem solving—an essential capability for guiding early-stage ventures through complex data and regulatory environments.',
+      'As Executive Director of Cognera Data Labs Private Limited, he focuses on building scalable analytical frameworks that translate raw data into actionable intelligence. His vision for the company is the design of robust dashboards that not only support real-time performance monitoring but also align with evolving regulatory expectations and ethical standards in data management. By integrating research methodologies with practical analytics, he promotes transparency, accuracy, and responsible data usage across organizational processes.',
+      'Radhakrishna\'s strengths lie in analytical modeling, research synthesis, and strategic oversight, enabling him to bridge the gap between technical teams and leadership stakeholders. His commitment to governance, compliance, and ethical data practices positions Cognera Data Labs to develop trustworthy, insight-driven solutions while maintaining long-term credibility in a rapidly evolving digital ecosystem.'
+    ]
+  }
+]
+
+// Highlight stats
+const highlights = [
+  {
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+      </svg>
+    ),
+    label: 'DeepTech',
+    sublabel: 'Infrastructure',
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+      </svg>
+    ),
+    label: 'Privacy',
+    sublabel: 'By Design',
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" />
+      </svg>
+    ),
+    label: 'Behavioral',
+    sublabel: 'Intelligence',
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.745 3.745 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+      </svg>
+    ),
+    label: 'Compliance',
+    sublabel: 'Aligned',
+  },
+]
+
+// Expandable bio component
+function FounderCard({ founder }) {
+  const [expanded, setExpanded] = useState(false)
+  const previewParagraphs = founder.bio.slice(0, 2)
+  const remainingParagraphs = founder.bio.slice(2)
+
   return (
-    <div className="min-h-screen pt-16 sm:pt-18 pb-8 sm:pb-12 relative z-10">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="bg-white rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-[#6F2DBD]/5 transition-all duration-500 flex flex-col h-full group border border-gray-200/80 relative">
+      {/* Top Accent Bar */}
+      <div className="h-1.5 w-full bg-gradient-to-r from-[#6F2DBD] via-[#A663CC] to-[#6F2DBD]"></div>
 
-        {/* Hero Section */}
-        <section className="text-center mb-16 sm:mb-20">
-          <div className="max-w-4xl mx-auto">
-            <h1
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 sm:mb-8 leading-tight"
-            >
-              Data-Driven Innovation
-            </h1>
-            <p
-              className="text-lg sm:text-xl md:text-2xl text-gray-300 leading-relaxed"
-            >
-              Transforming raw data into actionable insights that drive business growth and digital productivity.
-            </p>
+      <div className="p-8 sm:p-10 flex-grow">
+        {/* Header with avatar and info */}
+        <div className="flex items-start gap-5 mb-8">
+          {/* Avatar */}
+          <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl bg-gradient-to-br from-[#6F2DBD] to-[#A663CC] flex items-center justify-center text-white text-xl font-bold shadow-lg shadow-[#6F2DBD]/20 flex-shrink-0">
+            {founder.initials}
           </div>
-        </section>
-
-
-        {/* Accreditation & Recognition Gallery */}
-        <section className="mb-16 sm:mb-20">
-          <div className="max-w-6xl mx-auto">
-            <h2
-              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 sm:mb-8 text-center"
-            >
-              Accreditation & Recognition
-            </h2>
-            <p
-              className="text-center text-gray-400 mb-8 sm:mb-12 text-sm sm:text-base"
-            >
-              Recognized by leading government bodies and industry organizations
-            </p>
-
-            {/* Modular Certificate Grid - Automatically adjusts for new certificates */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {certificates.map((certificate) => (
-                <CertificateCard key={certificate.id} certificate={certificate} />
-              ))}
-            </div>
+          <div className="min-w-0">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1 leading-tight">{founder.name}</h3>
+            <p className="text-[#6F2DBD] font-semibold text-sm tracking-wide mb-0.5">{founder.title}</p>
+            <p className="text-gray-400 text-xs">{founder.company}</p>
           </div>
-        </section>
+        </div>
 
-        {/* Company Information */}
-        <section className="mb-16 sm:mb-20">
-          <div className="max-w-4xl mx-auto">
-            <h2
-              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 sm:mb-8"
-            >
-              Company Information
-            </h2>
-            <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-white/10 rounded-xl p-6 sm:p-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <h3
-                    className="text-lg font-semibold text-white mb-2"
-                  >
-                    Entity Name
-                  </h3>
-                  <p
-                    className="text-gray-300"
-                  >
-                    Cognera Data Labs Private Limited
-                  </p>
-                </div>
-                <div>
-                  <h3
-                    className="text-lg font-semibold text-white mb-2"
-                  >
-                    Date of Incorporation
-                  </h3>
-                  <p
-                    className="text-gray-300"
-                  >
-                    November 7, 2025
-                  </p>
-                </div>
-                <div>
-                  <h3
-                    className="text-lg font-semibold text-white mb-2"
-                  >
-                    Industry
-                  </h3>
-                  <p
-                    className="text-gray-300"
-                  >
-                    Analytics Industry
-                  </p>
-                </div>
-                <div>
-                  <h3
-                    className="text-lg font-semibold text-white mb-2"
-                  >
-                    Sector
-                  </h3>
-                  <p
-                    className="text-gray-300"
-                  >
-                    Data Science
-                  </p>
-                </div>
-                <div>
-                  <h3
-                    className="text-lg font-semibold text-white mb-2"
-                  >
-                    Enterprise Type
-                  </h3>
-                  <p
-                    className="text-gray-300"
-                  >
-                    Micro
-                  </p>
-                </div>
-                <div>
-                  <h3
-                    className="text-lg font-semibold text-white mb-2"
-                  >
-                    Location
-                  </h3>
-                  <p
-                    className="text-gray-300"
-                  >
-                    Hyderabad, Telangana
-                  </p>
-                </div>
+        {/* Divider */}
+        <div className="w-12 h-0.5 bg-gradient-to-r from-[#6F2DBD]/40 to-transparent mb-6"></div>
+
+        {/* Bio */}
+        <div className="space-y-4 text-gray-600 leading-relaxed text-[15px]">
+          {previewParagraphs.map((paragraph, index) => (
+            <p key={index} className={index === 0 ? 'text-gray-800 font-medium' : ''}>{paragraph}</p>
+          ))}
+
+          {/* Expandable remaining bio */}
+          {remainingParagraphs.length > 0 && (
+            <>
+              <div
+                className={`space-y-4 overflow-hidden transition-all duration-500 ease-in-out ${
+                  expanded ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
+                }`}
+              >
+                {remainingParagraphs.map((paragraph, index) => (
+                  <p key={index + 2}>{paragraph}</p>
+                ))}
               </div>
-            </div>
-          </div>
-        </section>
 
+              <button
+                onClick={() => setExpanded(!expanded)}
+                className="inline-flex items-center gap-1.5 text-[#6F2DBD] font-semibold text-sm hover:text-[#5A2399] transition-colors group/btn mt-2"
+              >
+                {expanded ? 'Show less' : 'Read full bio'}
+                <svg
+                  className={`w-4 h-4 transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+            </>
+          )}
+        </div>
       </div>
     </div>
   )
 }
 
+export default function AboutPage() {
+  return (
+    <div className="min-h-screen bg-[#FBFBFB]">
+
+      {/* Hero Section - Enhanced with gradient backdrop */}
+      <section className="relative pt-28 sm:pt-36 pb-16 sm:pb-24 overflow-hidden">
+        {/* Decorative background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#6F2DBD]/[0.03] via-transparent to-transparent"></div>
+        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#6F2DBD]/[0.04] rounded-full blur-3xl pointer-events-none"></div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="max-w-4xl mx-auto text-center">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#6F2DBD]/[0.08] text-[#6F2DBD] rounded-full text-sm font-semibold mb-8 border border-[#6F2DBD]/10">
+              <span className="w-2 h-2 rounded-full bg-[#6F2DBD] animate-pulse"></span>
+              About Cognera Data Labs
+            </div>
+
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-[1.1] tracking-tight">
+              Building the future of{' '}
+              <span className="bg-gradient-to-r from-[#6F2DBD] to-[#A663CC] bg-clip-text text-transparent">
+                privacy-first
+              </span>{' '}
+              behavioral intelligence
+            </h1>
+
+            <p className="text-lg sm:text-xl text-gray-500 leading-relaxed max-w-2xl mx-auto">
+              Enabling organizations to understand engagement without compromising user privacy. Analytics built on trust.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Key Highlights - Horizontal pill bar */}
+      <section className="pb-16 sm:pb-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {highlights.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex items-center gap-3 bg-white border border-gray-200/80 rounded-xl px-5 py-4 hover:border-[#6F2DBD]/30 hover:shadow-md hover:shadow-[#6F2DBD]/5 transition-all duration-300 group"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-[#6F2DBD]/[0.08] flex items-center justify-center text-[#6F2DBD] group-hover:bg-[#6F2DBD]/[0.12] transition-colors flex-shrink-0">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold text-gray-900">{item.label}</div>
+                    <div className="text-xs text-gray-400">{item.sublabel}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What is the Cognera Initiative? */}
+      <section className="pb-20 sm:pb-32">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+              {/* Left Column: Image Area */}
+              <div className="relative group order-2 lg:order-1">
+                {/* Decorative background blob */}
+                <div className="absolute -inset-4 bg-gradient-to-br from-[#6F2DBD]/10 to-[#A663CC]/10 rounded-3xl blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-[#6F2DBD]/10 border border-gray-200/50 aspect-[4/3] bg-white">
+                  <img
+                    src="/img/about_us_abstract_illustration.png"
+                    alt="Data Intelligence Illustration"
+                    className="w-full h-full object-cover transform group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                  />
+                </div>
+
+                {/* Floating Badge */}
+                <div className="absolute -bottom-5 -right-3 sm:-right-5 bg-white p-3.5 rounded-xl shadow-lg shadow-gray-900/5 border border-gray-100 flex items-center gap-3 animate-bounce-slow">
+                  <div className="w-9 h-9 bg-emerald-50 rounded-lg flex items-center justify-center text-emerald-600">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">Privacy First</div>
+                    <div className="text-gray-900 font-bold text-sm">100% Compliant</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: Content */}
+              <div className="lg:pl-4 order-1 lg:order-2">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#6F2DBD]/[0.08] text-[#6F2DBD] rounded-full text-xs font-semibold mb-6 uppercase tracking-wider">
+                  The Cognera Initiative
+                </div>
+                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 leading-tight tracking-tight">
+                  Solving the structural gap in modern analytics
+                </h2>
+
+                <div className="space-y-5 text-gray-500 text-[16.5px] leading-relaxed">
+                  <p>
+                    Cognera Data Labs is a DeepTech initiative dedicated to solving a structural gap in modern analytics: enabling organizations to understand user engagement and behavioral flow without relying on invasive tracking or personally identifiable data.
+                  </p>
+                  <p>
+                    Our mission is to build a trusted behavioral intelligence layer that enables responsible measurement while maintaining strict regulatory and ethical boundaries. We believe that deep insights and user privacy should not be mutually exclusive.
+                  </p>
+                </div>
+
+                {/* Visual stats */}
+                <div className="mt-10 pt-8 border-t border-gray-100 grid grid-cols-3 gap-6">
+                  <div className="text-center sm:text-left">
+                    <div className="text-2xl sm:text-3xl font-bold text-gray-900 mb-0.5">SDK</div>
+                    <p className="text-xs sm:text-sm text-gray-400">Based Architecture</p>
+                  </div>
+                  <div className="text-center sm:text-left">
+                    <div className="text-2xl sm:text-3xl font-bold text-gray-900 mb-0.5">Zero</div>
+                    <p className="text-xs sm:text-sm text-gray-400">PII Collection</p>
+                  </div>
+                  <div className="text-center sm:text-left">
+                    <div className="text-2xl sm:text-3xl font-bold text-gray-900 mb-0.5">Real-time</div>
+                    <p className="text-xs sm:text-sm text-gray-400">Analytics</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Accreditation & Recognition */}
+      <section className="pb-20 sm:pb-28">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            {/* Section wrapper with subtle background */}
+            <div className="bg-gradient-to-b from-gray-50 to-[#FBFBFB] rounded-3xl border border-gray-100 px-6 sm:px-10 lg:px-16 py-16 sm:py-20">
+              <div className="text-center mb-14">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-emerald-50 text-emerald-700 rounded-full text-xs font-semibold mb-5 uppercase tracking-wider">
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                  Verified & Recognized
+                </div>
+                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
+                  Accreditation & Recognition
+                </h2>
+                <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+                  Recognized by leading government bodies for compliance, innovation, and enterprise readiness.
+                </p>
+              </div>
+
+              {/* Certificate Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                {certificates.map((certificate) => (
+                  <CertificateCard key={certificate.id} certificate={certificate} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Founders & Leadership */}
+      <section className="pb-20 sm:pb-28">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-14">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#6F2DBD]/[0.08] text-[#6F2DBD] rounded-full text-xs font-semibold mb-5 uppercase tracking-wider">
+                Leadership
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
+                Founders & Leadership
+              </h2>
+              <p className="text-gray-400 text-lg max-w-xl mx-auto">
+                The visionaries building Cognera Data Labs from the ground up.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {founders.map((founder) => (
+                <FounderCard key={founder.id} founder={founder} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Company Information Footer */}
+      <section className="pb-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="border border-gray-100 rounded-2xl bg-white px-8 py-6">
+              <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-gray-400">
+                <div className="flex items-center gap-2">
+                  <svg className="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 7.5h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
+                  </svg>
+                  <span className="font-medium text-gray-500">Cognera Data Labs Pvt Ltd</span>
+                </div>
+                <span className="hidden sm:inline text-gray-200">|</span>
+                <span>Inc. Nov 7, 2025</span>
+                <span className="hidden sm:inline text-gray-200">|</span>
+                <span className="font-mono text-xs">CIN: U62099TS2025PTC196024</span>
+                <span className="hidden sm:inline text-gray-200">|</span>
+                <div className="flex items-center gap-1.5">
+                  <svg className="w-3.5 h-3.5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                  </svg>
+                  <span>Hyderabad, Telangana</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  )
+}

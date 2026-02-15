@@ -2,137 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Gellix Font Family */
-@font-face {
-  font-family: 'Gellix';
-  src: url('/fonts/Gellix/Gellix-TRIAL-Thin.otf') format('opentype');
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gellix';
-  src: url('/fonts/Gellix/Gellix-TRIAL-ThinItalic.otf') format('opentype');
-  font-weight: 100;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gellix';
-  src: url('/fonts/Gellix/Gellix-TRIAL-Light.otf') format('opentype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gellix';
-  src: url('/fonts/Gellix/Gellix-TRIAL-LightItalic.otf') format('opentype');
-  font-weight: 300;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gellix';
-  src: url('/fonts/Gellix/Gellix-TRIAL-Regular.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gellix';
-  src: url('/fonts/Gellix/Gellix-TRIAL-RegularItalic.otf') format('opentype');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gellix';
-  src: url('/fonts/Gellix/Gellix-TRIAL-Medium.otf') format('opentype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gellix';
-  src: url('/fonts/Gellix/Gellix-TRIAL-MediumItalic.otf') format('opentype');
-  font-weight: 500;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gellix';
-  src: url('/fonts/Gellix/Gellix-TRIAL-SemiBold.otf') format('opentype');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gellix';
-  src: url('/fonts/Gellix/Gellix-TRIAL-SemiBoldItalic.otf') format('opentype');
-  font-weight: 600;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gellix';
-  src: url('/fonts/Gellix/Gellix-TRIAL-Bold.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gellix';
-  src: url('/fonts/Gellix/Gellix-TRIAL-BoldItalic.otf') format('opentype');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gellix';
-  src: url('/fonts/Gellix/Gellix-TRIAL-ExtraBold.otf') format('opentype');
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gellix';
-  src: url('/fonts/Gellix/Gellix-TRIAL-ExtraBoldItalic.otf') format('opentype');
-  font-weight: 800;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gellix';
-  src: url('/fonts/Gellix/Gellix-TRIAL-Black.otf') format('opentype');
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gellix';
-  src: url('/fonts/Gellix/Gellix-TRIAL-BlackItalic.otf') format('opentype');
-  font-weight: 900;
-  font-style: italic;
-  font-display: swap;
-}
+/* ==========================================
+   COGNERA DESIGN SYSTEM
+   Palette: #6F2DBD | #A663CC | #171123 | #FBFBFB
+   ========================================== */
 
 :root {
-  /* Colors */
+  /* Core Palette */
   --purple-primary: #6F2DBD;
   --purple-light: #A663CC;
   --purple-dark: #5A2399;
@@ -143,9 +19,11 @@
   --text-primary: #171123;
   --text-secondary: #4A4458;
   --text-tertiary: #8B8696;
+  --text-muted: #B0ABB8;
 
   /* Borders & Dividers */
   --border-light: #E5E0EB;
+  --border-subtle: #F0EDF4;
 
   /* Semantic */
   --success: #10B981;
@@ -153,30 +31,43 @@
   --error: #EF4444;
 
   /* Fonts */
-  --font-header: 'Gellix', var(--font-inter), -apple-system, sans-serif;
-  --font-body: 'Gellix', var(--font-roboto), -apple-system, sans-serif;
-  --font-gellix: 'Gellix', sans-serif;
+  --font-header: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-  /* Spacing */
+  /* Spacing Scale */
   --space-xs: 8px;
   --space-sm: 16px;
   --space-md: 24px;
   --space-lg: 32px;
   --space-xl: 48px;
   --space-2xl: 64px;
+  --space-3xl: 96px;
 
   /* Border Radius */
-  --radius-sm: 4px;
+  --radius-sm: 6px;
   --radius-md: 8px;
   --radius-lg: 12px;
   --radius-xl: 16px;
+  --radius-2xl: 24px;
 
   /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px rgba(23, 17, 35, 0.1);
-  --shadow-lg: 0 10px 15px rgba(23, 17, 35, 0.1);
-  --shadow-xl: 0 20px 25px rgba(23, 17, 35, 0.15);
-  --shadow-purple: 0 8px 24px rgba(111, 45, 189, 0.3);
+  --shadow-sm: 0 1px 2px rgba(23, 17, 35, 0.04);
+  --shadow-md: 0 4px 12px rgba(23, 17, 35, 0.08);
+  --shadow-lg: 0 12px 24px rgba(23, 17, 35, 0.1);
+  --shadow-xl: 0 20px 40px rgba(23, 17, 35, 0.12);
+  --shadow-purple: 0 8px 24px rgba(111, 45, 189, 0.25);
+  --shadow-purple-lg: 0 16px 48px rgba(111, 45, 189, 0.2);
+}
+
+/* ==========================================
+   BASE STYLES
+   ========================================== */
+
+html {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -188,60 +79,110 @@ body {
   font-family: var(--font-body);
   font-weight: 400;
   font-size: 16px;
-  line-height: 28px;
+  line-height: 1.6;
   font-optical-sizing: auto;
+  letter-spacing: -0.01em;
 }
 
-html {
-  margin: 0;
-  padding: 0;
-}
+/* ==========================================
+   TYPOGRAPHY SCALE
+   Mobile-first with clamp() for fluid sizing
+   ========================================== */
 
-/* Typography */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-header);
   font-optical-sizing: auto;
-  color: var(--navy-dark);
 }
 
+/* Display / Hero: 48px → 72px */
 h1 {
   font-weight: 700;
-  letter-spacing: -1.5px;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
 }
 
+/* Section Headings: 32px → 44px */
 h2 {
   font-weight: 700;
-  letter-spacing: -0.8px;
+  font-size: clamp(32px, 3.5vw, 44px);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
 }
 
-h3,
+/* Subsection: 24px → 32px */
+h3 {
+  font-weight: 600;
+  font-size: clamp(24px, 2.5vw, 32px);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+/* Card titles: 20px → 24px */
 h4 {
   font-weight: 600;
+  font-size: clamp(20px, 2vw, 24px);
+  line-height: 1.3;
+  letter-spacing: -0.015em;
 }
 
-/* Button Styles */
+/* Small headings: 18px → 20px */
+h5 {
+  font-weight: 600;
+  font-size: clamp(18px, 1.5vw, 20px);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+/* Body large */
+.text-body-lg {
+  font-size: 18px;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+}
+
+/* Body regular */
+.text-body {
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: -0.005em;
+}
+
+/* Body small */
+.text-body-sm {
+  font-size: 14px;
+  line-height: 1.55;
+  letter-spacing: 0;
+}
+
+/* Caption */
+.text-caption {
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================
+   BUTTON STYLES
+   ========================================== */
+
 .btn-primary {
   font-family: var(--font-header);
   font-weight: 600;
-  font-size: 16px;
-  letter-spacing: 0.3px;
-
+  font-size: 15px;
+  letter-spacing: 0.01em;
   background: linear-gradient(135deg, var(--purple-primary) 0%, var(--purple-light) 100%);
-  color: #FBFBFB;
+  color: var(--white-off);
   padding: 14px 28px;
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   border: none;
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, var(--purple-dark) 0%, #8F4FB3 100%);
-  box-shadow: 0 8px 24px rgba(111, 45, 189, 0.3);
+  background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple-primary) 100%);
+  box-shadow: var(--shadow-purple);
   transform: translateY(-2px);
 }
 
@@ -249,18 +190,19 @@ h4 {
   font-family: var(--font-header);
   font-weight: 500;
   font-size: 15px;
-
   background: transparent;
   color: var(--purple-primary);
   padding: 12px 24px;
-  border: 2px solid var(--purple-primary);
-  border-radius: 8px;
-  transition: all 0.2s ease;
+  border: 1.5px solid var(--purple-primary);
+  border-radius: var(--radius-lg);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
 }
 
 .btn-secondary:hover {
   background: var(--purple-primary);
-  color: #FBFBFB;
+  color: var(--white-off);
+  box-shadow: var(--shadow-purple);
 }
 
 .btn-ghost {
@@ -271,6 +213,7 @@ h4 {
   background: transparent;
   border: none;
   transition: all 0.2s ease;
+  cursor: pointer;
 }
 
 .btn-ghost:hover {
@@ -278,32 +221,40 @@ h4 {
   text-decoration: underline;
 }
 
-/* Card Styles */
+/* ==========================================
+   CARD STYLES
+   ========================================== */
+
 .card {
-  background: #FBFBFB;
+  background: var(--white-off);
   border: 1px solid var(--border-light);
-  border-radius: 12px;
+  border-radius: var(--radius-xl);
   padding: 32px;
-  box-shadow: 0 2px 8px rgba(23, 17, 35, 0.04);
-  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card:hover {
   border-color: var(--purple-light);
   box-shadow: 0 8px 24px rgba(111, 45, 189, 0.08);
+  transform: translateY(-2px);
 }
 
-/* Form Styles */
+/* ==========================================
+   FORM STYLES
+   ========================================== */
+
 input,
 textarea {
   font-family: var(--font-body);
   font-size: 16px;
   color: var(--navy-dark);
-  background: #FBFBFB;
+  background: var(--white-off);
   border: 1px solid var(--border-light);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   padding: 12px 16px;
   width: 100%;
+  transition: all 0.2s ease;
 }
 
 input:focus,
@@ -313,13 +264,54 @@ textarea:focus {
   box-shadow: 0 0 0 3px rgba(111, 45, 189, 0.1);
 }
 
-/* Hero Section */
+/* ==========================================
+   UTILITY CLASSES
+   ========================================== */
+
+/* Themed section backgrounds */
+.section-dark {
+  background-color: var(--navy-dark);
+  color: var(--white-off);
+}
+
+.section-light {
+  background-color: var(--white-off);
+}
+
+.section-muted {
+  background-color: #F5F3F8;
+}
+
+/* Selection color */
+::selection {
+  background-color: rgba(111, 45, 189, 0.15);
+  color: var(--navy-dark);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-light);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--purple-light);
+}
+
+/* Legacy support */
 .hero-section {
-  background: #FBFBFB;
+  background: var(--white-off);
   position: relative;
 }
 
-/* Matrix Grid (Legacy support if needed, or remove if unused) */
 .matrix-grid-container {
   display: none;
 }

@@ -32,21 +32,23 @@ module.exports = {
         error: '#EF4444',
       },
       fontFamily: {
-        sans: ['Gellix', 'var(--font-roboto)', 'sans-serif'], // Body text defaults to Gellix
-        header: ['Gellix', 'var(--font-inter)', 'sans-serif'], // Headers use Gellix
-        display: ['Gellix', 'var(--font-inter)', 'sans-serif'],
-        gellix: ['Gellix', 'sans-serif'],
+        sans: ['var(--font-inter)', 'sans-serif'],
+        header: ['var(--font-inter)', 'sans-serif'],
+        display: ['var(--font-inter)', 'sans-serif'],
+      },
+      animation: {
+        'bounce-slow': 'bounce-slow 3s ease-in-out infinite',
+      },
+      keyframes: {
+        'bounce-slow': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-8px)' },
+        },
       },
     },
   },
   plugins: [],
 }
-
-
-
-
-
-
 
 
 

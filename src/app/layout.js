@@ -1,41 +1,11 @@
 import './globals.css'
 import ConditionalLayout from '@/components/ConditionalLayout'
-import { IBM_Plex_Sans, Roboto, Poppins, Newsreader, Inter } from 'next/font/google'
-
-const ibmPlexSans = IBM_Plex_Sans({
-  subsets: ['latin'],
-  weight: ['100', '200', '300', '400', '500', '600', '700'],
-  style: ['normal', 'italic'],
-  variable: '--font-ibm-plex-sans',
-})
-
-const roboto = Roboto({
-  subsets: ['latin'],
-  weight: ['100', '300', '400', '500', '700', '900'],
-  style: ['normal', 'italic'],
-  variable: '--font-roboto',
-})
-
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  style: ['normal'],
-  variable: '--font-poppins',
-})
-
-const newsreader = Newsreader({
-  subsets: ['latin'],
-  style: ['normal', 'italic'],
-  variable: '--font-newsreader',
-  display: 'swap',
-  weight: 'variable',
-})
+import { Inter } from 'next/font/google'
 
 const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  style: ['normal'],
   variable: '--font-inter',
+  display: 'swap',
 })
 
 export const metadata = {
@@ -98,10 +68,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${ibmPlexSans.variable} ${roboto.variable} ${poppins.variable} ${newsreader.variable} ${inter.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable}`} suppressHydrationWarning>
       <body suppressHydrationWarning>
         <ConditionalLayout>{children}</ConditionalLayout>
       </body>
     </html>
   )
 }
+
