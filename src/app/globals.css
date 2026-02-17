@@ -70,14 +70,15 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* All body text uses Poppins; headers (h1–h6) use serif */
 body {
   background-color: var(--white-off);
   color: var(--text-primary);
   overflow-x: hidden;
   margin: 0;
   padding: 0;
-  font-family: var(--font-body);
-  font-weight: 400;
+  font-family: var(--font-body); /* Poppins */
+  font-weight: 500; /* Poppins Medium; use 700 for bold */
   font-size: 16px;
   line-height: 1.6;
   font-optical-sizing: auto;
@@ -86,11 +87,13 @@ body {
 
 /* ==========================================
    TYPOGRAPHY SCALE
+   Body text: Poppins. Headers: serif (Times).
    Mobile-first with clamp() for fluid sizing
    ========================================== */
 
+/* Headers use serif; body text stays Poppins (set on body below) */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-header);
+  font-family: var(--font-header) !important;
   font-optical-sizing: auto;
 }
 

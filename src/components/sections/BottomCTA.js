@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export default function BottomCTA() {
   return (
-    <section className="relative overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8" style={{ backgroundColor: '#171123' }}>
+    <section className="relative overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8 bg-navy-dark">
       {/* Background decorations */}
       <div className="absolute inset-0">
         <div className="absolute -top-32 -left-32 w-[400px] h-[400px] bg-[#6F2DBD]/15 rounded-full blur-[100px]"></div>
@@ -25,7 +25,7 @@ export default function BottomCTA() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
             <Link
               href="/get-started"
-              className="group inline-flex items-center gap-2.5 px-8 py-4 rounded-xl font-semibold text-base hover:-translate-y-0.5 transition-all duration-300"
+              className="group inline-flex items-center gap-2.5 px-8 py-4 rounded-xl font-semibold text-base hover:-translate-y-0.5 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#171123]"
               style={{ background: 'linear-gradient(135deg, #6F2DBD, #A663CC)', color: '#FFFFFF', boxShadow: '0 8px 24px rgba(111,45,189,0.4)' }}
             >
               Start free trial
@@ -35,7 +35,7 @@ export default function BottomCTA() {
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl font-semibold text-base transition-all duration-300"
+              className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl font-semibold text-base transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#171123]"
               style={{ backgroundColor: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.8)' }}
             >
               Questions? Talk to us
@@ -52,7 +52,7 @@ export default function BottomCTA() {
               <Link
                 key={i}
                 href={link.href}
-                className="flex items-center gap-1.5 text-sm font-medium transition-colors hover:underline"
+                className="flex items-center gap-1.5 text-sm font-medium transition-colors hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#171123] rounded"
                 style={{ color: 'rgba(255,255,255,0.4)' }}
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

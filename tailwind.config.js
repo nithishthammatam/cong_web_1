@@ -62,6 +62,18 @@ module.exports = {
           '0%': { opacity: '0', filter: 'blur(10px)' },
           '100%': { opacity: '1', filter: 'blur(0)' },
         },
+        'rotate-in-ccw': {
+          '0%': { opacity: '0', transform: 'rotate(-8deg) scale(0.96)' },
+          '100%': { opacity: '1', transform: 'rotate(0) scale(1)' },
+        },
+        typewriter: {
+          '0%': { maxWidth: '0', overflow: 'hidden' },
+          '100%': { maxWidth: '100%', overflow: 'visible' },
+        },
+        'color-cycle': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.85' },
+        },
       },
       animation: {
         'bounce-slow': 'bounce-slow 3s ease-in-out infinite',
@@ -70,6 +82,9 @@ module.exports = {
         'slide-in-left': 'slide-in-left 0.3s ease-out forwards',
         'slide-in-right': 'slide-in-right 0.3s ease-out forwards',
         'blur-in': 'blur-in 0.4s ease-out forwards',
+        'rotate-in-ccw': 'rotate-in-ccw 0.5s ease-out forwards',
+        'typewriter': 'typewriter 1.2s steps(30) forwards',
+        'color-cycle': 'color-cycle 2s ease-in-out infinite',
       },
     },
   },
