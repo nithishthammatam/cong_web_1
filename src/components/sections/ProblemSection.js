@@ -72,26 +72,29 @@ export default function ProblemSection() {
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
             </svg>
-            The Problem
+            The Invisible Problem
           </div>
 
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight leading-[1.15] mb-5" style={{ color: '#171123' }}>
-            Analytics show <em className="not-italic" style={{ color: '#6F2DBD' }}>what</em> happened.
-            <br />
-            Not <em className="not-italic" style={{ color: '#6F2DBD' }}>how</em> it happened.
+            The Invisible Problem in <span style={{ color: '#6F2DBD' }}>Digital Analytics</span>
           </h2>
 
-          <p className="text-base leading-relaxed mb-8" style={{ color: '#4A4458' }}>
-            Traditional analytics stop at clicks, visits, and events. They don&apos;t explain the behaviour behind the numbers — leaving product teams guessing.
+          <p className="text-base leading-relaxed mb-4" style={{ color: '#4A4458' }}>
+            Today’s analytics tools measure clicks and events. They do not understand behavioural transitions — when attention drops, when users mentally disengage, or why they switch contexts.
           </p>
 
-          {/* Visual accent: arrow pointing to cards */}
+          <div className="text-base leading-relaxed mb-8" style={{ color: '#4A4458' }}>
+            Digital platforms lack visibility into:
+            <ul className="list-disc pl-5 mt-2 space-y-1">
+              <li>Attention loss moments</li>
+              <li>App switching patterns</li>
+              <li>Re-engagement triggers</li>
+            </ul>
+          </div>
+
           <div className="hidden lg:flex items-center gap-3" style={{ color: '#8B8696' }}>
             <div className="h-[1px] w-12" style={{ backgroundColor: '#E5E0EB' }}></div>
-            <span className="text-xs font-medium tracking-wide uppercase">Common challenges</span>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
+            <span className="text-xs font-medium tracking-wide uppercase">The Blind Spot</span>
           </div>
         </div>
 
@@ -123,22 +126,24 @@ export default function ProblemSection() {
             ))}
           </div>
 
-          {/* Bottom callout */}
           <div
-            className="mt-4 rounded-xl border px-5 py-4 flex items-center gap-4"
+            className="mt-6 rounded-xl border px-6 py-5 flex items-start gap-4"
             style={{ borderColor: 'rgba(111,45,189,0.15)', backgroundColor: 'rgba(111,45,189,0.03)' }}
           >
             <div
-              className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
-              style={{ backgroundColor: 'rgba(111,45,189,0.08)', color: '#6F2DBD' }}
+              className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+              style={{ backgroundColor: '#6F2DBD', color: '#FFFFFF' }}
             >
-              <svg className="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <p className="text-sm font-medium" style={{ color: '#171123' }}>
-              Companies are making product decisions with <span style={{ color: '#6F2DBD', fontWeight: 700 }}>half the information</span>. There&apos;s a better way.
-            </p>
+            <div>
+              <h4 className="font-bold text-gray-900 mb-1">Cognera solves this behavioural blind spot.</h4>
+              <p className="text-sm text-gray-600">
+                We provide the missing layer of intelligence that explains the <span className="font-semibold text-[#6F2DBD]">why</span> behind the user actions.
+              </p>
+            </div>
           </div>
         </div>
 

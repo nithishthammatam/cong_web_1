@@ -2,15 +2,22 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import Input from '@/components/ui/Input'
 import Button from '@/components/ui/Button'
 import Checkbox from '@/components/ui/Checkbox'
+import { auth } from '@/lib/firebase'
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 
 export default function GetStartedPage() {
+    const router = useRouter()
     const [formData, setFormData] = useState({
         email: '',
+        password: '',
         agreeToTerms: false
     })
+    const [error, setError] = useState('')
+    const [loading, setLoading] = useState(false)
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target
@@ -20,10 +27,38 @@ export default function GetStartedPage() {
         }))
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log('Get Started form submitted:', formData)
-        // Add registration logic here
+        setError('')
+        setLoading(true)
+
+        if (!formData.email || !formData.password) {
+            setError('Please fill in all fields')
+            setLoading(false)
+            return
+        }
+
+        try {
+            await createUserWithEmailAndPassword(auth, formData.email, formData.password)
+            console.log('User registered successfully')
+            router.push('/dashboard') // Redirect to dashboard or home
+        } catch (err) {
+            console.error('Registration error:', err)
+            setError(err.message)
+        } finally {
+            setLoading(false)
+        }
+    }
+
+    const handleGoogleSignIn = async () => {
+        const provider = new GoogleAuthProvider()
+        try {
+            await signInWithPopup(auth, provider)
+            router.push('/dashboard')
+        } catch (err) {
+            console.error('Google Sign In error:', err)
+            setError(err.message)
+        }
     }
 
     return (
@@ -52,7 +87,10 @@ export default function GetStartedPage() {
                         </p>
                     </div>
 
-                    <button className="flex items-center justify-center w-full px-6 py-3 border border-gray-300 rounded-lg shadow-sm bg-white text-base font-medium text-gray-700 hover:bg-gray-50 transition-colors h-14">
+                    <button
+                        type="button"
+                        onClick={handleGoogleSignIn}
+                        className="flex items-center justify-center w-full px-6 py-3 border border-gray-300 rounded-lg shadow-sm bg-white text-base font-medium text-gray-700 hover:bg-gray-50 transition-colors h-14">
                         <svg className="h-6 w-6 mr-3" viewBox="0 0 24 24">
                             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
                             <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
@@ -83,6 +121,18 @@ export default function GetStartedPage() {
                             required
                         />
 
+                        <Input
+                            label="Password"
+                            type="password"
+                            name="password"
+                            placeholder="Create a password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            className="light-input"
+                            required
+                            minLength={6}
+                        />
+
                         <div className="flex items-center">
                             <Checkbox
                                 name="agreeToTerms"
@@ -105,6 +155,12 @@ export default function GetStartedPage() {
                         </Button>
                     </form>
 
+                    {error && (
+                        <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
+                            {error}
+                        </div>
+                    )}
+
                     <div className="mt-6 text-center">
                         <p className="text-sm text-gray-600">
                             Already have an account?{' '}
@@ -116,5 +172,7 @@ export default function GetStartedPage() {
                 </div>
             </div>
         </div>
+
+
     )
 }

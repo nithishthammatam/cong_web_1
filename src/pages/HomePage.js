@@ -4,6 +4,7 @@ import HowItWorks from '@/components/sections/HowItWorks'
 import FeatureGrid from '@/components/sections/FeatureGrid'
 import UseCasesSection from '@/components/sections/UseCasesSection'
 import BottomCTA from '@/components/sections/BottomCTA'
+import ProblemSection from '@/components/sections/ProblemSection'
 
 export default function HomePage() {
   return (
@@ -12,7 +13,12 @@ export default function HomePage() {
       <Hero />
 
       <div className="relative z-10">
-        {/* 2. How It Works */}
+        {/* 2. Problem Section */}
+        <div className="py-16 sm:py-24 bg-white">
+          <ProblemSection />
+        </div>
+
+        {/* 3. How It Works */}
         <div className="py-14 sm:py-20" style={{ backgroundColor: '#F8F5FC' }}>
           <HowItWorks />
         </div>

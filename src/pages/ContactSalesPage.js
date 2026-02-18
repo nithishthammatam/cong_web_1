@@ -4,6 +4,8 @@ import { useState } from 'react'
 import Input from '@/components/ui/Input'
 import Checkbox from '@/components/ui/Checkbox'
 import Button from '@/components/ui/Button'
+import { db } from '@/lib/firebase'
+import { collection, addDoc } from 'firebase/firestore'
 
 export default function ContactSalesPage() {
   const [formData, setFormData] = useState({
@@ -81,8 +83,11 @@ export default function ContactSalesPage() {
       // Here you would send the form data to your API
       console.log('Contact sales form submitted:', formData)
 
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      // Save to Firestore
+      await addDoc(collection(db, 'contact_sales'), {
+        ...formData,
+        createdAt: new Date()
+      })
 
       // Show success message or redirect
       alert('Thank you! We will contact you soon.')
