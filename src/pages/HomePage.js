@@ -5,6 +5,7 @@ import FeatureGrid from '@/components/sections/FeatureGrid'
 import UseCasesSection from '@/components/sections/UseCasesSection'
 import BottomCTA from '@/components/sections/BottomCTA'
 import ProblemSection from '@/components/sections/ProblemSection'
+import IndiaRelevanceSection from '@/components/sections/IndiaRelevanceSection'
 
 export default function HomePage() {
   return (
@@ -36,7 +37,10 @@ export default function HomePage() {
           <UseCasesSection />
         </div>
 
-        {/* 6. Bottom CTA */}
+        {/* 6. Built for India */}
+        <IndiaRelevanceSection />
+
+        {/* 7. Bottom CTA */}
         <BottomCTA />
       </div>
     </div>
