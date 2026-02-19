@@ -1,8 +1,10 @@
+/* eslint-disable react/no-unescaped-entities */
 'use client'
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { auth } from '@/lib/firebase'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
 
@@ -189,10 +191,12 @@ export default function DashboardPage() {
                     <div className="flex justify-between h-16">
                         <div className="flex items-center">
                             <div className="flex-shrink-0 flex items-center gap-2">
-                                <img
+                                <Image
                                     className="h-8 w-auto"
                                     src="/img/Cognera_log_bg_removed.png"
                                     alt="Cognera"
+                                    width={32}
+                                    height={32}
                                 />
                                 <span className="text-xl font-bold text-gray-900">Cognera</span>
                             </div>
@@ -231,7 +235,7 @@ export default function DashboardPage() {
                 {/* SUCCESS CELEBRATION */}
                 <div className="bg-gradient-to-r from-success/20 to-purple-primary/20 rounded-xl p-8 mb-8 text-center">
                     <div className="text-5xl mb-3">🎉</div>
-                    <h2 className="text-3xl font-bold text-navy-dark mb-2">You're All Set!</h2>
+                    <h2 className="text-3xl font-bold text-navy-dark mb-2">You&apos;re All Set!</h2>
                     <p className="text-lg text-text-secondary mb-6">Your app is now tracking behavioral analytics</p>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
                         {['SDK integrated', 'Tracking active', 'Data flowing', 'Dashboard ready'].map((item, i) => (
@@ -312,17 +316,17 @@ export default function DashboardPage() {
 
                 {/* SAMPLE INSIGHTS */}
                 <div className="mb-12">
-                    <h2 className="text-2xl font-bold text-navy-dark mb-2">AI Insights You'll Receive</h2>
+                    <h2 className="text-2xl font-bold text-navy-dark mb-2">AI Insights You&apos;ll Receive</h2>
                     <p className="text-text-secondary mb-6">Real examples from actual apps</p>
                     <div className="space-y-4">
                         {sampleInsights.map((insight, i) => (
                             <div
                                 key={i}
                                 className={`bg-white border-2 rounded-xl p-6 ${insight.color === 'purple'
-                                        ? 'border-purple-primary/30 bg-purple-primary/5'
-                                        : insight.color === 'blue'
-                                            ? 'border-blue-500/30 bg-blue-50'
-                                            : 'border-success/30 bg-success/5'
+                                    ? 'border-purple-primary/30 bg-purple-primary/5'
+                                    : insight.color === 'blue'
+                                        ? 'border-blue-500/30 bg-blue-50'
+                                        : 'border-success/30 bg-success/5'
                                     }`}
                             >
                                 <div className="flex items-start gap-3 mb-3">
@@ -398,7 +402,7 @@ export default function DashboardPage() {
 
                 {/* NEXT STEPS */}
                 <div className="mb-12">
-                    <h2 className="text-2xl font-bold text-navy-dark mb-4">What's Next?</h2>
+                    <h2 className="text-2xl font-bold text-navy-dark mb-4">What&apos;s Next?</h2>
                     <div className="bg-white border border-gray-200 rounded-xl p-6">
                         <div className="space-y-3 mb-4">
                             {nextSteps.map((step, i) => (

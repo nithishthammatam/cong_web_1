@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import Input from '@/components/ui/Input'
 import Button from '@/components/ui/Button'
@@ -67,10 +68,11 @@ export default function GetStartedPage() {
             <div className="h-16 flex items-center px-4 sm:px-6 lg:px-8 border-b border-transparent z-50">
                 <Link href="/" className="flex items-center gap-2">
                     <div className="relative w-8 h-8">
-                        <img
+                        <Image
                             src="/img/Cognera_log_bg_removed.png"
                             alt="Cognera Logo"
-                            className="object-contain w-full h-full"
+                            className="object-contain"
+                            fill
                         />
                     </div>
                     <span className="text-xl font-bold text-gray-900 tracking-tight">Cognera</span>

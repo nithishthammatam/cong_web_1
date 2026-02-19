@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import CertificateCard from '@/components/ui/CertificateCard'
 
 const certificates = [
@@ -123,9 +124,8 @@ function FounderCard({ founder }) {
           {remainingParagraphs.length > 0 && (
             <>
               <div
-                className={`space-y-4 overflow-hidden transition-all duration-500 ease-in-out ${
-                  expanded ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
-                }`}
+                className={`space-y-4 overflow-hidden transition-all duration-500 ease-in-out ${expanded ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
+                  }`}
               >
                 {remainingParagraphs.map((paragraph, index) => (
                   <p key={index + 2}>{paragraph}</p>
@@ -210,10 +210,11 @@ export default function AboutPage() {
             <div className="relative group order-2 lg:order-1">
               <div className="absolute -inset-3 bg-[#6F2DBD]/5 rounded-2xl blur-2xl opacity-60" />
               <div className="relative rounded-2xl overflow-hidden shadow-lg border border-gray-100 aspect-[4/3] bg-white">
-                <img
+                <Image
                   src="/img/about_us_abstract_illustration.png"
                   alt="Data Intelligence Illustration"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                  fill
                 />
               </div>
               <div className="absolute -bottom-4 -right-2 sm:-right-4 bg-white p-3 rounded-xl shadow-md border border-gray-100 flex items-center gap-3">

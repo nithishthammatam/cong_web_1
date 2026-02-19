@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 
 /**
  * Footer Component
@@ -156,10 +157,12 @@ export default function Footer() {
           {/* Column 5: Brand & Newsletter */}
           <div className="col-span-2 lg:col-span-1 mt-8 lg:mt-0">
             <Link href="/" className="flex items-center gap-2 mb-6">
-              <img
+              <Image
                 src="/img/Cognera_log_bg_removed.png"
                 alt="Cognera Logo"
                 className="h-8 w-auto object-contain brightness-0 invert"
+                width={32}
+                height={32}
               />
               <span className="text-xl font-bold tracking-tight" style={{ color: '#ffffff' }}>Cognera</span>
             </Link>
