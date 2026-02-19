@@ -2,26 +2,26 @@
 
 import { useState } from 'react'
 
-export default function Input({ 
-  label, 
-  type = 'text', 
-  name, 
-  placeholder, 
-  value, 
+export default function Input({
+  label,
+  type = 'text',
+  name,
+  placeholder,
+  value,
   onChange,
   showPasswordToggle = false,
   className = '',
-  ...props 
+  ...props
 }) {
   const [showPassword, setShowPassword] = useState(false)
   const [isFocused, setIsFocused] = useState(false)
 
-  const inputType = showPasswordToggle && type === 'password' 
-    ? (showPassword ? 'text' : 'password') 
+  const inputType = showPasswordToggle && type === 'password'
+    ? (showPassword ? 'text' : 'password')
     : type
 
   const isLight = className.includes('light-input')
-  
+
   return (
     <div className={`mb-4 ${className.replace('light-input', '').trim()}`}>
       {label && (
@@ -38,11 +38,10 @@ export default function Input({
           onChange={onChange}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          className={`w-full px-4 py-3 rounded-lg border ${
-            isLight 
+          className={`w-full px-4 py-3 rounded-lg border ${isLight
               ? `bg-white ${isFocused ? 'border-[#7440FA]' : 'border-gray-300'} text-gray-800 placeholder-gray-400`
               : `bg-[#1a1a1a] ${isFocused ? 'border-[#7440FA]' : 'border-gray-700'} text-white placeholder-gray-500`
-          } focus:outline-none focus:ring-2 focus:ring-[#7440FA] transition-all`}
+            } focus:outline-none focus:ring-2 focus:ring-[#7440FA] transition-all`}
           {...props}
         />
         {showPasswordToggle && type === 'password' && (

@@ -1,12 +1,48 @@
 'use client'
 
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Button from '@/components/ui/Button'
+import { auth } from '@/lib/firebase'
+import { onAuthStateChanged, signOut } from 'firebase/auth'
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [user, setUser] = useState(null)
+  const [isProfileOpen, setIsProfileOpen] = useState(false)
+  const profileRef = useRef(null)
+
+  // Handle outside click for profile dropdown
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (profileRef.current && !profileRef.current.contains(event.target)) {
+        setIsProfileOpen(false)
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [profileRef]);
+
+  // Handle auth state changes
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser)
+    })
+    return () => unsubscribe()
+  }, [])
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth)
+      setIsProfileOpen(false)
+      setMobileMenuOpen(false)
+    } catch (error) {
+      console.error('Error signing out:', error)
+    }
+  }
 
   // Handle scroll effect - fires immediately on mount and on scroll
   useEffect(() => {
@@ -333,28 +369,88 @@ export default function Header() {
 
           {/* Action Buttons */}
           <div className="hidden lg:flex items-center gap-4">
-            <Link
-              href="/login"
-              className={`${actionTextColor} font-bold text-[15px] transition-colors duration-300 flex items-center gap-2`}
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-              Log In
-            </Link>
-            <Link
-              href="/contact-sales"
-              className={`font-medium text-[15px] border px-6 py-2.5 rounded-full transition-all duration-300 ${contactBorderColor}`}
-            >
-              Contact Sales
-            </Link>
-            <Button
-              href="/get-started"
-              variant="primary"
-              className="!bg-[#6F2DBD] hover:!bg-[#6F2DBD] !text-white !px-6 !py-2.5 !text-[15px] !rounded-full !font-semibold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
-            >
-              Get Started
-            </Button>
+            {user ? (
+              <>
+                <div className="relative" ref={profileRef}>
+                  <button
+                    onClick={() => setIsProfileOpen(!isProfileOpen)}
+                    className="flex items-center gap-3 focus:outline-none"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#6F2DBD] to-[#8b5cf6] text-white flex items-center justify-center font-bold text-lg shadow-md border-2 border-white ring-2 ring-transparent hover:ring-[#6F2DBD]/20 transition-all">
+                      {user.email ? user.email[0].toUpperCase() : 'U'}
+                    </div>
+                  </button>
+
+                  {isProfileOpen && (
+                    <div className="absolute right-0 mt-3 w-64 bg-white rounded-xl shadow-2xl py-2 border border-gray-100 ring-1 ring-black ring-opacity-5 animate-in fade-in slide-in-from-top-2 duration-200">
+                      <div className="px-4 py-3 border-b border-gray-100 bg-gray-50/50">
+                        <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Signed in as</p>
+                        <p className="text-sm font-medium text-gray-900 truncate" title={user.email}>{user.email}</p>
+                      </div>
+                      <div className="py-2">
+                        <Link
+                          href="/dashboard"
+                          className="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:bg-purple-50 hover:text-[#6F2DBD] transition-colors"
+                          onClick={() => setIsProfileOpen(false)}
+                        >
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+                          Dashboard
+                        </Link>
+                        <button
+                          onClick={handleLogout}
+                          className="w-full text-left flex items-center gap-2 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition-colors"
+                        >
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
+                          Sign out
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                <div className="hidden lg:block relative group">
+                  <Link
+                    href="/contact-sales"
+                    className={`font-medium text-[15px] border px-6 py-2.5 rounded-full transition-all duration-300 ${contactBorderColor}`}
+                  >
+                    Contact Sales
+                  </Link>
+                </div>
+                <Button
+                  href="/dashboard"
+                  variant="primary"
+                  className="!bg-[#6F2DBD] hover:!bg-[#6F2DBD] !text-white !px-6 !py-2.5 !text-[15px] !rounded-full !font-semibold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+                >
+                  Dashboard
+                </Button>
+              </>
+            ) : (
+              <>
+                <Link
+                  href="/login"
+                  className={`${actionTextColor} font-bold text-[15px] transition-colors duration-300 flex items-center gap-2`}
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  Log In
+                </Link>
+                <div className="hidden lg:block relative group">
+                  <Link
+                    href="/contact-sales"
+                    className={`font-medium text-[15px] border px-6 py-2.5 rounded-full transition-all duration-300 ${contactBorderColor}`}
+                  >
+                    Contact Sales
+                  </Link>
+                </div>
+                <Button
+                  href="/get-started"
+                  variant="primary"
+                  className="!bg-[#6F2DBD] hover:!bg-[#6F2DBD] !text-white !px-6 !py-2.5 !text-[15px] !rounded-full !font-semibold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+                >
+                  Get Started
+                </Button>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -389,28 +485,57 @@ export default function Header() {
                 </Link>
               ))}
               <div className="flex flex-col gap-4 mt-4">
-                <Link
-                  href="/login"
-                  className="text-center py-2 text-lg font-semibold text-gray-700 hover:text-[#6F2DBD]"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Log In
-                </Link>
-                <Link
-                  href="/contact-sales"
-                  className="text-center py-2 text-lg font-semibold text-gray-700 hover:text-[#6F2DBD]"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Contact Sales
-                </Link>
-                <Button
-                  href="/get-started"
-                  variant="primary"
-                  className="w-full !bg-[#6F2DBD] !text-white !rounded-full !py-4 !text-lg justify-center"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Get Started
-                </Button>
+                {user ? (
+                  <>
+                    <div className="flex items-center gap-3 py-4 border-b border-gray-100">
+                      <div className="w-10 h-10 rounded-full bg-[#6F2DBD] text-white flex items-center justify-center font-bold">
+                        {user.email ? user.email[0].toUpperCase() : 'U'}
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-sm font-semibold text-gray-900 truncate">Signed in as</p>
+                        <p className="text-sm text-gray-500 truncate">{user.email}</p>
+                      </div>
+                    </div>
+                    <Link
+                      href="/dashboard"
+                      className="text-center py-2 text-lg font-semibold text-gray-700 hover:text-[#6F2DBD]"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Dashboard
+                    </Link>
+                    <button
+                      onClick={handleLogout}
+                      className="text-center py-2 text-lg font-semibold text-red-600 hover:text-red-700"
+                    >
+                      Sign Out
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      href="/login"
+                      className="text-center py-2 text-lg font-semibold text-gray-700 hover:text-[#6F2DBD]"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Log In
+                    </Link>
+                    <Link
+                      href="/contact-sales"
+                      className="text-center py-2 text-lg font-semibold text-gray-700 hover:text-[#6F2DBD]"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Contact Sales
+                    </Link>
+                    <Button
+                      href="/get-started"
+                      variant="primary"
+                      className="w-full !bg-[#6F2DBD] !text-white !rounded-full !py-4 !text-lg justify-center"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Get Started
+                    </Button>
+                  </>
+                )}
               </div>
             </div>
           </div>

@@ -121,7 +121,7 @@ export default function GetSDKPage() {
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-sm text-text-secondary">Create a free Cognera account</span>
-                  <Link href="/signup" className="text-sm font-semibold text-purple-primary hover:underline ml-1">Sign Up</Link>
+                  <Link href="/get-started" className="text-sm font-semibold text-purple-primary hover:underline ml-1">Sign Up</Link>
                 </li>
                 <li className="flex items-center gap-2">
                   <svg className="w-5 h-5 text-gray-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -187,22 +187,20 @@ export default function GetSDKPage() {
               key={platform.id}
               onClick={() => !platform.disabled && setActivePlatform(platform.id)}
               disabled={platform.disabled}
-              className={`px-4 py-2 rounded-t-lg font-semibold text-sm transition-colors relative ${
-                activePlatform === platform.id
+              className={`px-4 py-2 rounded-t-lg font-semibold text-sm transition-colors relative ${activePlatform === platform.id
                   ? 'bg-white border-t border-l border-r border-gray-200 text-purple-primary'
                   : platform.disabled
-                  ? 'text-gray-400 cursor-not-allowed'
-                  : 'text-text-secondary hover:text-purple-primary'
-              }`}
+                    ? 'text-gray-400 cursor-not-allowed'
+                    : 'text-text-secondary hover:text-purple-primary'
+                }`}
             >
               <span className="mr-2">{platform.icon}</span>
               {platform.name}
               <span
-                className={`ml-2 px-2 py-0.5 rounded text-[10px] font-bold ${
-                  platform.badge.color === 'green'
+                className={`ml-2 px-2 py-0.5 rounded text-[10px] font-bold ${platform.badge.color === 'green'
                     ? 'bg-success/20 text-success'
                     : 'bg-gray-200 text-gray-600'
-                }`}
+                  }`}
               >
                 {platform.badge.text}
               </span>
@@ -242,9 +240,8 @@ export default function GetSDKPage() {
           {downloadOptions.map((option) => (
             <div
               key={option.id}
-              className={`bg-white border rounded-xl p-6 ${
-                option.comingSoon ? 'border-gray-200 opacity-60' : 'border-purple-primary/30'
-              }`}
+              className={`bg-white border rounded-xl p-6 ${option.comingSoon ? 'border-gray-200 opacity-60' : 'border-purple-primary/30'
+                }`}
             >
               {option.recommended && (
                 <span className="inline-block px-2 py-1 bg-success/20 text-success text-xs font-bold rounded mb-3">

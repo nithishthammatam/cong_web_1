@@ -23,7 +23,7 @@ export default function LoginPage() {
         try {
             await signInWithEmailAndPassword(auth, email, password)
             console.log('Login successful')
-            router.push('/dashboard')
+            router.push('/')
         } catch (err) {
             console.error('Login error:', err)
             setError('Invalid email or password')
@@ -36,7 +36,7 @@ export default function LoginPage() {
         const provider = new GoogleAuthProvider()
         try {
             await signInWithPopup(auth, provider)
-            router.push('/dashboard')
+            router.push('/')
         } catch (err) {
             console.error('Google Sign In error:', err)
             setError(err.message)

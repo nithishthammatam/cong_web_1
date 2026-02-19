@@ -41,7 +41,7 @@ export default function GetStartedPage() {
         try {
             await createUserWithEmailAndPassword(auth, formData.email, formData.password)
             console.log('User registered successfully')
-            router.push('/dashboard') // Redirect to dashboard or home
+            router.push('/') // Redirect to dashboard or home
         } catch (err) {
             console.error('Registration error:', err)
             setError(err.message)
@@ -54,7 +54,7 @@ export default function GetStartedPage() {
         const provider = new GoogleAuthProvider()
         try {
             await signInWithPopup(auth, provider)
-            router.push('/dashboard')
+            router.push('/')
         } catch (err) {
             console.error('Google Sign In error:', err)
             setError(err.message)

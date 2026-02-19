@@ -39,7 +39,7 @@ export const metadata = {
     description: 'Understand user behavior with Cognera Data Labs Analytics Platform',
     images: [
       {
-        url: '/img/android-chrome-512x512.png',
+        url: '/img/Cognera_log_bg_removed.png',
         width: 512,
         height: 512,
         alt: 'Cognera Data Labs Logo',
@@ -50,7 +50,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Cognera Data Labs - Analytics Platform',
     description: 'Understand user behavior with Cognera Data Labs Analytics Platform',
-    images: ['/img/android-chrome-512x512.png'],
+    images: ['/img/Cognera_log_bg_removed.png'],
   },
   robots: {
     index: true,
@@ -64,13 +64,7 @@ export const metadata = {
     },
   },
   icons: {
-    icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-    ],
-    shortcut: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
+    icon: '/img/Cognera_log_bg_removed.png',
   },
 }
 
