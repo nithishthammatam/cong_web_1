@@ -9,38 +9,32 @@ import IndiaRelevanceSection from '@/components/sections/IndiaRelevanceSection'
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen relative" style={{ zIndex: 10 }}>
-      {/* 1. Hero Section */}
+    <div className="min-h-screen relative z-10">
       <Hero />
 
       <div className="relative z-10">
-        {/* 2. Problem Section */}
-        <div className="py-16 sm:py-24 bg-white">
+        <section className="py-16 sm:py-24 bg-white" aria-label="Problem">
           <ProblemSection />
-        </div>
+        </section>
 
-        {/* 3. How It Works */}
-        <div className="py-14 sm:py-20" style={{ backgroundColor: '#F8F5FC' }}>
+        <section className="py-16 sm:py-24 bg-[#F8F5FC]" aria-label="How it works">
           <HowItWorks />
-        </div>
+        </section>
 
-        {/* 3. Capabilities — slightly more spacing for hierarchy */}
-        <div className="py-16 sm:py-24">
+        <section className="py-16 sm:py-24 bg-[#FBFBFB]" aria-label="Capabilities">
           <FeatureGrid />
-        </div>
+        </section>
 
-        {/* 4. Social Proof — full-width carousel */}
         <SocialProofSection />
 
-        {/* 5. Use Cases */}
-        <div className="py-14 sm:py-20">
+        <section className="py-16 sm:py-24 bg-white" aria-label="Use cases">
           <UseCasesSection />
-        </div>
+        </section>
 
-        {/* 6. Built for India */}
-        <IndiaRelevanceSection />
+        <section className="py-16 sm:py-24 bg-[#F8F5FC]" aria-label="Built for India">
+          <IndiaRelevanceSection />
+        </section>
 
-        {/* 7. Bottom CTA */}
         <BottomCTA />
       </div>
     </div>

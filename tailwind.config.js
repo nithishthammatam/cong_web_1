@@ -33,9 +33,9 @@ module.exports = {
       },
       fontFamily: {
         sans: ['var(--font-poppins)', 'Poppins', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
-        header: ['Times New Roman', 'Times', 'Georgia', 'serif'],
-        serif: ['Times New Roman', 'Times', 'Georgia', 'serif'],
-        display: ['Times New Roman', 'Times', 'Georgia', 'serif'],
+        header: ['var(--font-libre-baskerville)', 'Libre Baskerville', 'Georgia', 'serif'],
+        serif: ['var(--font-libre-baskerville)', 'Libre Baskerville', 'Georgia', 'serif'],
+        display: ['var(--font-libre-baskerville)', 'Libre Baskerville', 'Georgia', 'serif'],
       },
       keyframes: {
         'bounce-slow': {

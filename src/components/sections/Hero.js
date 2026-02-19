@@ -3,43 +3,36 @@
 import HeroAnimation from './HeroAnimation'
 
 /* ============================================
-   MAIN HERO EXPORT
+   HERO SECTION – Optimised layout, bg, spacing
+   Design system: #FBFBFB, #6F2DBD, #A663CC, #171123
    ============================================ */
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8 md:min-h-[600px] flex items-center justify-center">
-      {/* Background - light purple gradient with decorative blob */}
-      <div className="absolute inset-0">
-        {/* Base: very light purple tint */}
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #f3edf9 0%, #ede4f7 30%, #e8e0f8 50%, #ddd6f3 100%)' }}></div>
+    <section
+      className="relative overflow-hidden min-h-[min(100vh,900px)] flex items-center justify-center"
+      aria-label="Hero"
+    >
+      {/* Background – design system palette, subtle gradient */}
+      <div className="absolute inset-0 bg-[#FBFBFB]" />
+      <div
+        className="absolute inset-0 opacity-100"
+        style={{
+          background: 'linear-gradient(165deg, #FBFBFB 0%, #F8F5FC 35%, #F3EEFA 70%, #EDE6F6 100%)',
+        }}
+      />
+      {/* Single soft blob – right side only, no clutter */}
+      <div
+        className="absolute top-0 right-0 w-[min(80%,520px)] h-[min(85%,680px)] rounded-[40%_60%_70%_30%/40%_50%_60%_50%] opacity-90"
+        style={{ background: 'radial-gradient(ellipse 80% 80% at 70% 30%, rgba(111,45,189,0.06) 0%, transparent 55%)' }}
+      />
+      <div
+        className="absolute bottom-0 left-0 w-[min(60%,400px)] h-[50%] rounded-[60%_40%_30%_70%/60%_30%_70%_40%] opacity-90"
+        style={{ background: 'radial-gradient(ellipse 70% 70% at 30% 80%, rgba(166,99,204,0.05) 0%, transparent 55%)' }}
+      />
 
-        {/* Large decorative wave/blob shape - right side */}
-        <svg className="absolute right-0 top-0 h-full w-[65%] hidden lg:block" viewBox="0 0 600 800" preserveAspectRatio="none" fill="none">
-          <path d="M100,0 Q200,100 180,200 Q160,300 200,400 Q240,500 180,600 Q120,700 200,800 L600,800 L600,0 Z" fill="rgba(111,45,189,0.04)" />
-          <path d="M150,0 Q250,120 230,240 Q210,360 250,480 Q290,580 230,700 Q170,780 250,800 L600,800 L600,0 Z" fill="rgba(166,99,204,0.03)" />
-        </svg>
-
-        {/* Soft glow orbs */}
-        <div className="absolute -top-32 -right-32 w-[500px] h-[500px] bg-[#6F2DBD]/[0.06] rounded-full blur-[100px]"></div>
-        <div className="absolute bottom-0 left-[20%] w-[400px] h-[400px] bg-[#A663CC]/[0.05] rounded-full blur-[80px]"></div>
-
-        {/* Decorative circles - far edges */}
-        <div className="absolute top-[15%] left-[5%] w-4 h-4 rounded-full border-2 border-[#6F2DBD]/[0.12] hidden lg:block"></div>
-        <div className="absolute top-[35%] left-[3%] w-2 h-2 rounded-full bg-[#A663CC]/20 hidden lg:block"></div>
-        <div className="absolute bottom-[25%] left-[8%] w-3 h-3 rounded-full border border-[#A663CC]/[0.15] hidden lg:block"></div>
-
-        {/* Dots pattern - bottom left */}
-        <div className="absolute bottom-[10%] left-[2%] hidden lg:block opacity-40">
-          <div className="grid grid-cols-3 gap-2">
-            {[0.4, 0.7, 0.3, 0.6, 0.9, 0.5, 0.2, 0.8, 0.4].map((op, i) => (
-              <div key={i} className="w-1 h-1 rounded-full bg-[#6F2DBD]" style={{ opacity: op }}></div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="relative z-10 px-4 sm:px-6 lg:px-8 w-full max-w-7xl mx-auto flex flex-col items-center justify-center min-h-[600px] py-20 lg:py-24">
+      {/* Content – centred, consistent padding */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 flex flex-col items-center justify-center min-h-[min(100vh,900px)]">
         <HeroAnimation />
       </div>
     </section>

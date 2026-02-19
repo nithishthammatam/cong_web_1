@@ -1,12 +1,19 @@
 import './globals.css'
+import { Poppins, Libre_Baskerville } from 'next/font/google'
 import ConditionalLayout from '@/components/ConditionalLayout'
-import { Poppins } from 'next/font/google'
 
 const poppins = Poppins({
   subsets: ['latin'],
   variable: '--font-poppins',
   display: 'swap',
   weight: ['500', '700'], /* Medium + Bold only */
+})
+
+const libreBaskerville = Libre_Baskerville({
+  subsets: ['latin'],
+  variable: '--font-libre-baskerville',
+  display: 'swap',
+  weight: ['400', '700'],
 })
 
 export const metadata = {
@@ -69,7 +76,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={poppins.variable} suppressHydrationWarning>
+    <html lang="en" className={`${poppins.variable} ${libreBaskerville.variable}`} suppressHydrationWarning>
       <body suppressHydrationWarning>
         <ConditionalLayout>{children}</ConditionalLayout>
       </body>

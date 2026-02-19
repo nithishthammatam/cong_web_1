@@ -2,7 +2,7 @@
 
 function LightStatCard({ label, value, change }) {
     return (
-        <div className="border border-gray-100 rounded-xl p-4 flex flex-col justify-between h-full min-h-[90px]">
+        <div className="border border-gray-100 rounded-xl p-4 flex flex-col justify-between h-full min-h-[88px] bg-gray-50/30">
             <div className="text-xs font-medium text-gray-500 whitespace-nowrap">{label}</div>
             <div>
                 <div className="text-xl font-bold text-[#171123] mb-1">{value}</div>
@@ -17,11 +17,11 @@ function LightStatCard({ label, value, change }) {
 export default function DashboardMockup() {
     return (
         <div className="relative">
-            {/* Subtle shadow */}
-            <div className="absolute -inset-4 bg-[#6F2DBD]/[0.04] rounded-3xl blur-2xl"></div>
+            {/* Soft glow */}
+            <div className="absolute -inset-3 bg-[#6F2DBD]/[0.05] rounded-[1.25rem] blur-2xl" aria-hidden />
 
-            {/* Main Dashboard Frame - WHITE card */}
-            <div className="relative bg-white rounded-2xl shadow-xl shadow-gray-900/[0.08] border border-gray-200/60 overflow-hidden text-left">
+            {/* Main Dashboard Frame – design system radius & shadow */}
+            <div className="relative bg-white rounded-2xl shadow-lg shadow-gray-900/[0.06] border border-gray-100 overflow-hidden text-left">
                 {/* Sidebar + Content layout */}
                 <div className="flex">
                     {/* Sidebar - Medium Width */}
