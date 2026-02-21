@@ -2,8 +2,8 @@
 
 export default function IndiaRelevanceSection() {
     return (
-        <section className="bg-white py-16 sm:py-24 border-t border-gray-100">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <section className="bg-white pt-4 sm:pt-6 pb-6 sm:pb-8 border-t border-gray-100">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6">
                 <div className="bg-gradient-to-br from-[#F8F5FC] to-white rounded-3xl p-8 sm:p-12 lg:p-16 border border-[#E5E0EB]">
                     <div className="max-w-3xl mx-auto text-center">
 

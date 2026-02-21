@@ -64,10 +64,11 @@ export default function UseCasesSection() {
           Use Cases
         </div>
         <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4 text-navy-dark">
-          Built for every kind of app
+          No matter what you build, we&apos;ve got you covered.
         </h2>
-        <p className="text-lg max-w-xl mx-auto text-text-secondary">
-          See how Ecommerce, Edutech, Social, and Gaming use Cognera to understand user behavior and engagement.
+        <p className="text-lg max-w-2xl mx-auto text-text-secondary leading-relaxed">
+          <span className="block">Cognera works across ecommerce, edtech, social, gaming, and more,</span>
+          <span className="block">bringing powerful behavioural analytics to every kind of app.</span>
         </p>
       </div>
 

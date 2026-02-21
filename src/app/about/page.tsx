@@ -99,53 +99,64 @@ const highlights = [
 
 function FounderCard({ founder }) {
   const [expanded, setExpanded] = useState(false)
-  const previewParagraphs = founder.bio.slice(0, 2)
-  const remainingParagraphs = founder.bio.slice(2)
+  const hasMore = founder.bio.length > 2
 
   return (
-    <div className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full">
-      <div className="h-1 w-full bg-gradient-to-r from-[#6F2DBD] via-[#A663CC] to-[#6F2DBD]" />
-      <div className="p-6 sm:p-8 flex-grow">
-        <div className="flex items-start gap-4 mb-6">
-          <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-[#6F2DBD] to-[#A663CC] flex items-center justify-center text-white text-lg font-bold flex-shrink-0">
+    <div className="bg-[#FCFCFD] rounded-2xl overflow-hidden border border-[#E8E3EF] flex flex-col h-full">
+      <div className="h-[3px] w-full bg-[#6F2DBD]" />
+      <div className="p-6 sm:p-8 flex-grow flex flex-col">
+        <div className="flex items-start gap-4 sm:gap-5 min-h-[132px]">
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#6F2DBD] to-[#A663CC] flex items-center justify-center text-[#171123] text-[1.75rem] font-bold flex-shrink-0">
             {founder.initials}
           </div>
-          <div className="min-w-0">
-            <h3 className="text-xl font-bold text-[#171123] mb-1 leading-tight">{founder.name}</h3>
-            <p className="text-[#6F2DBD] font-semibold text-sm tracking-wide mb-0.5">{founder.title}</p>
-            <p className="text-[#4A4458] text-sm">{founder.company}</p>
+          <div className="min-w-0 flex-1">
+            <div className="min-h-[4.25rem] sm:min-h-[5rem] mb-3">
+              <h3 className="font-header text-2xl sm:text-[2rem] leading-tight text-[#171123]">{founder.name}</h3>
+            </div>
+            <div className="grid gap-2.5 text-sm sm:min-h-[58px]">
+              <div className="grid grid-cols-[92px_minmax(0,1fr)] items-center gap-3 min-h-[24px]">
+                <span className="text-[11px] uppercase tracking-wider text-[#8B8696] font-semibold pt-0.5">Role</span>
+                <p className="text-[#6F2DBD] font-semibold leading-snug sm:truncate" title={founder.title}>{founder.title}</p>
+              </div>
+              <div className="grid grid-cols-[92px_minmax(0,1fr)] items-center gap-3 min-h-[24px]">
+                <span className="text-[11px] uppercase tracking-wider text-[#8B8696] font-semibold pt-0.5">Company</span>
+                <p className="text-[#4A4458] leading-snug sm:truncate" title={founder.company}>{founder.company}</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="w-12 h-0.5 bg-gradient-to-r from-[#6F2DBD]/40 to-transparent mb-5" />
-        <div className="space-y-4 text-[#4A4458] leading-relaxed text-body">
-          {previewParagraphs.map((paragraph, index) => (
-            <p key={index} className={index === 0 ? 'text-[#171123] font-medium' : ''}>{paragraph}</p>
-          ))}
-          {remainingParagraphs.length > 0 && (
-            <>
-              <div
-                className={`space-y-4 overflow-hidden transition-all duration-500 ease-in-out ${expanded ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
-                  }`}
+        <div className="w-full h-px bg-[#CDBBE9] mt-6 mb-5" />
+        <div className="text-[#171123] leading-[1.45] text-body text-justify flex flex-col flex-1">
+          <div
+            className={`relative overflow-hidden transition-all duration-500 ease-in-out ${expanded ? 'max-h-[2200px]' : 'h-[18rem] sm:h-[20rem]'
+              }`}
+          >
+            <div className="space-y-4">
+              {founder.bio.map((paragraph, index) => (
+                <p key={index} className={index === 0 ? 'font-medium text-justify' : 'text-justify'}>
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+            {!expanded && (
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[#FCFCFD] to-transparent" />
+            )}
+          </div>
+          {hasMore && (
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="inline-flex items-center gap-1.5 text-[#6F2DBD] font-semibold text-sm hover:text-[#5A2399] transition-colors mt-4"
+            >
+              {expanded ? 'Show less' : 'Read full bio'}
+              <svg
+                className={`w-4 h-4 transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                {remainingParagraphs.map((paragraph, index) => (
-                  <p key={index + 2}>{paragraph}</p>
-                ))}
-              </div>
-              <button
-                onClick={() => setExpanded(!expanded)}
-                className="inline-flex items-center gap-1.5 text-[#6F2DBD] font-semibold text-sm hover:text-[#5A2399] transition-colors mt-2"
-              >
-                {expanded ? 'Show less' : 'Read full bio'}
-                <svg
-                  className={`w-4 h-4 transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-            </>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
           )}
         </div>
       </div>
@@ -272,7 +283,7 @@ export default function AboutPage() {
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
-                Verified & Recognized
+                Recognized Certifications
               </div>
               <h2 className="text-[#171123] mb-4">
                 Accreditation & Recognition
@@ -304,7 +315,7 @@ export default function AboutPage() {
               The visionaries building Cognera Data Labs from the ground up.
             </p>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {founders.map((founder) => (
               <FounderCard key={founder.id} founder={founder} />
             ))}

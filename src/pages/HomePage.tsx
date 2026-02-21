@@ -27,13 +27,11 @@ export default function HomePage() {
 
         <SocialProofSection />
 
-        <section className="py-16 sm:py-24 bg-white" aria-label="Use cases">
+        <section className="pt-16 sm:pt-20 pb-6 sm:pb-8 bg-white" aria-label="Use cases">
           <UseCasesSection />
         </section>
 
-        <section className="py-16 sm:py-24 bg-[#F8F5FC]" aria-label="Built for India">
-          <IndiaRelevanceSection />
-        </section>
+        <IndiaRelevanceSection />
 
         <BottomCTA />
       </div>

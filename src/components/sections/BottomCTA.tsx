@@ -11,7 +11,7 @@ export default function BottomCTA() {
         <div className="absolute -bottom-32 -right-32 w-[400px] h-[400px] bg-[#A663CC]/10 rounded-full blur-[100px]"></div>
       </div>
 
-      <div className="relative z-10 px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+      <div className="relative z-10 px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="max-w-3xl mx-auto text-center">
           {/* Headline */}
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-5" style={{ color: '#FFFFFF', lineHeight: 1.15 }}>

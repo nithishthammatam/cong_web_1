@@ -34,8 +34,6 @@ export default function HowItWorks() {
     <section className="max-w-6xl mx-auto px-4 sm:px-6">
       {/* Header */}
       <div className="text-center mb-14">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-5 bg-purple-primary/10 text-purple-primary">
-        </div>
         <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4 text-navy-dark">
           From Integration to Intelligence
         </h2>

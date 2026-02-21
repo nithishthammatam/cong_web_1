@@ -15,6 +15,12 @@ function LightStatCard({ label, value, change }) {
 }
 
 export default function DashboardMockup() {
+    const categoryData = [
+        { label: 'Social', pct: 78, color: '#6F2DBD' },
+        { label: 'Productivity', pct: 65, color: '#A663CC' },
+        { label: 'Entertainment', pct: 52, color: '#8B5FBF' },
+    ]
+
     return (
         <div className="relative">
             {/* Soft glow */}
@@ -115,15 +121,15 @@ export default function DashboardMockup() {
                             </div>
 
                             {/* Categories - Takes up 1 column (Vertical Stack) - Reduced height to h-[100px] */}
-                            <div className="flex flex-col gap-2 justify-between h-[100px]">
-                                {['Social', 'Productivity', 'Entertainment'].map((cat, i) => (
-                                    <div key={i} className="border border-gray-100 rounded-lg px-3 py-1 flex items-center justify-between h-[28px]">
-                                        <div className="text-[10px] text-gray-400">{cat}</div>
-                                        <div className="flex items-center gap-2">
-                                            <div className="h-1.5 w-8 bg-gray-100 rounded-full overflow-hidden">
-                                                <div className="h-full rounded-full" style={{ width: `${[78, 65, 52][i]}%`, backgroundColor: ['#6F2DBD', '#A663CC', '#8B5FBF'][i] }}></div>
-                                            </div>
-                                            <div className="text-[10px] font-bold" style={{ color: '#171123' }}>{[78, 65, 52][i]}%</div>
+                            <div className="grid grid-rows-3 gap-2 h-[100px]">
+                                {categoryData.map(({ label, pct, color }) => (
+                                    <div key={label} className="border border-gray-100 rounded-lg px-2 py-1 flex items-center gap-1.5">
+                                        <div className="w-14 shrink-0 text-[9px] text-gray-400 truncate">{label}</div>
+                                        <div className="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden min-w-0">
+                                            <div className="h-full rounded-full" style={{ width: `${pct}%`, backgroundColor: color }}></div>
+                                        </div>
+                                        <div className="text-[10px] font-bold tabular-nums w-7 shrink-0 text-right" style={{ color: '#171123' }}>
+                                                {pct}%
                                         </div>
                                     </div>
                                 ))}
