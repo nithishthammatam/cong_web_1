@@ -98,7 +98,7 @@ const slides = [
     bg: '#F5F0FA',
   },
   {
-    title: 'Users frequently switch apps, fragmenting attention mid-task',
+    title: 'Frequent cross-application switching fragments attention during active workflows.',
     bg: '#E8F4FD',
   },
   {
@@ -106,7 +106,7 @@ const slides = [
     bg: '#F0F9F4',
   },
   {
-    title: 'Teams lack visibility into distraction vs focused usage patterns',
+    title: 'Teams lack visibility into patterns of distraction vs focused usage.',
     bg: '#FEF9E8',
   },
   {

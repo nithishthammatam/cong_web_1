@@ -35,13 +35,12 @@ export default function HowItWorks() {
       {/* Header */}
       <div className="text-center mb-14">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-5 bg-purple-primary/10 text-purple-primary">
-          Quick Setup
         </div>
         <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4 text-navy-dark">
-          Up and running in 4 steps
+          From Integration to Intelligence
         </h2>
         <p className="text-lg max-w-xl mx-auto text-text-secondary">
-          From zero to full behavioural analytics in minutes.
+          A four-phase architecture powering behavioral clarity at scale.
         </p>
       </div>
 

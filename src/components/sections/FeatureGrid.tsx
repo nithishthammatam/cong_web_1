@@ -135,10 +135,10 @@ export default function FeatureGrid() {
           Capabilities
         </div>
         <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4 text-navy-dark">
-          Everything you need to understand users
+          Unified Platform for Behavioral Intelligence
         </h2>
         <p className="text-lg max-w-2xl mx-auto text-text-secondary">
-          Six capabilities for behavioural insight—privacy-safe, cohort-ready, and built for attention analytics.
+          Six integrated analytics capabilities for understanding attention, engagement, and interaction behavior — with privacy by design.
         </p>
       </div>
 
