@@ -77,7 +77,7 @@ export default function Header() {
           : 'border-b border-transparent'
           }`}
         style={{
-          backgroundColor: isScrolled ? 'rgba(255,255,255,0.97)' : 'rgba(255,255,255,0.6)',
+          backgroundColor: mobileMenuOpen || isScrolled ? 'rgba(255,255,255,0.98)' : 'rgba(255,255,255,0.6)',
           backdropFilter: 'blur(12px)',
           WebkitBackdropFilter: 'blur(12px)',
         }}
@@ -467,79 +467,79 @@ export default function Header() {
             </svg>
           </button>
 
-          {/* Mobile Menu Overlay */}
-          <div
-            className={`fixed inset-0 bg-white z-[202] lg:hidden transition-all duration-300 ${mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
-              }`}
-            style={{ top: '64px' }}
-          >
-            <div className="container mx-auto px-4 py-8 flex flex-col gap-6">
-              {navLinks.map((link) => (
+        </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <div
+        className={`fixed inset-0 bg-white z-[202] lg:hidden transition-all duration-300 ${mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
+          }`}
+        style={{ top: '64px' }}
+      >
+        <div className="container mx-auto px-4 py-8 flex flex-col gap-6">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className="text-xl font-medium text-gray-900 hover:text-[#6F2DBD] py-2 border-b border-gray-100"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {link.name}
+            </Link>
+          ))}
+          <div className="flex flex-col gap-4 mt-4">
+            {user ? (
+              <>
+                <div className="flex items-center gap-3 py-4 border-b border-gray-100">
+                  <div className="w-10 h-10 rounded-full bg-[#6F2DBD] text-white flex items-center justify-center font-bold">
+                    {user.email ? user.email[0].toUpperCase() : 'U'}
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-sm font-semibold text-gray-900 truncate">Signed in as</p>
+                    <p className="text-sm text-gray-500 truncate">{user.email}</p>
+                  </div>
+                </div>
                 <Link
-                  key={link.name}
-                  href={link.href}
-                  className="text-xl font-medium text-gray-900 hover:text-[#6F2DBD] py-2 border-b border-gray-100"
+                  href="/dashboard"
+                  className="text-center py-2 text-lg font-semibold text-gray-700 hover:text-[#6F2DBD]"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  {link.name}
+                  Dashboard
                 </Link>
-              ))}
-              <div className="flex flex-col gap-4 mt-4">
-                {user ? (
-                  <>
-                    <div className="flex items-center gap-3 py-4 border-b border-gray-100">
-                      <div className="w-10 h-10 rounded-full bg-[#6F2DBD] text-white flex items-center justify-center font-bold">
-                        {user.email ? user.email[0].toUpperCase() : 'U'}
-                      </div>
-                      <div className="flex-1">
-                        <p className="text-sm font-semibold text-gray-900 truncate">Signed in as</p>
-                        <p className="text-sm text-gray-500 truncate">{user.email}</p>
-                      </div>
-                    </div>
-                    <Link
-                      href="/dashboard"
-                      className="text-center py-2 text-lg font-semibold text-gray-700 hover:text-[#6F2DBD]"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Dashboard
-                    </Link>
-                    <button
-                      onClick={handleLogout}
-                      className="text-center py-2 text-lg font-semibold text-red-600 hover:text-red-700"
-                    >
-                      Sign Out
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <Link
-                      href="/login"
-                      className="text-center py-2 text-lg font-semibold text-gray-700 hover:text-[#6F2DBD]"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Log In
-                    </Link>
-                    <Link
-                      href="/contact-sales"
-                      className="text-center py-2 text-lg font-semibold text-gray-700 hover:text-[#6F2DBD]"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Contact Sales
-                    </Link>
-                    <Button
-                      href="/get-started"
-                      variant="primary"
-                      className="w-full !bg-[#6F2DBD] !text-white !rounded-full !py-4 !text-lg justify-center"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Get Started
-                    </Button>
-                  </>
-                )}
-              </div>
-            </div>
+                <button
+                  onClick={handleLogout}
+                  className="text-center py-2 text-lg font-semibold text-red-600 hover:text-red-700"
+                >
+                  Sign Out
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  href="/login"
+                  className="text-center py-2 text-lg font-semibold text-gray-700 hover:text-[#6F2DBD]"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Log In
+                </Link>
+                <Link
+                  href="/contact-sales"
+                  className="text-center py-2 text-lg font-semibold text-gray-700 hover:text-[#6F2DBD]"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Contact Sales
+                </Link>
+                <Button
+                  href="/get-started"
+                  variant="primary"
+                  className="w-full !bg-[#6F2DBD] !text-white !rounded-full !py-4 !text-lg justify-center"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Get Started
+                </Button>
+              </>
+            )}
           </div>
-
         </div>
       </div>
     </header>
